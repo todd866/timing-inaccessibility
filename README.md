@@ -31,7 +31,7 @@ This paper follows a **living document** approach, with periodic upgrades that e
 - **Reviewer-proofing**: TRB scope conditions, PB anchored in standard thermo, metric dependence
 - Available in: `v2.0/` folder
 
-**Why version papers?** AI-assisted research tools enable rapid theoretical development. Rather than waiting for formal publication cycles, we release upgraded versions that extend and refine the arguments. Each version is self-contained and citable. The published version remains the canonical reference for formal citation.
+**Why version papers?** As AI tools improve, we revisit past publications to increase the rigor of the analysis. This could be perceived as undermining peer review—but the underlying result hasn't changed. The v1.0 claims stand; v2.0 simply makes them harder to misunderstand and harder to attack. Each version is self-contained and citable. The published version remains the canonical reference for formal citation; upgraded versions are available here for those who want the strongest form of the argument.
 
 ## Repository Structure
 

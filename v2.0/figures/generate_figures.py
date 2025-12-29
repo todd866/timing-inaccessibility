@@ -487,7 +487,7 @@ def fig5_framework_timing():
 
     ax5.set_xlabel('Resolution $\\Delta t$ (ms)', fontsize=9)
     ax5.set_ylabel('Accessible info (bits)', fontsize=9)
-    ax5.set_title('E. Landauer Terminates the Regress',
+    ax5.set_title('E. Landauer Terminates Regress (illustrative)',
                   fontweight='bold', pad=10)
     ax5.legend(loc='upper right', fontsize=7)
     # Position "Sub-Landauer" in axes fraction to avoid data overlap

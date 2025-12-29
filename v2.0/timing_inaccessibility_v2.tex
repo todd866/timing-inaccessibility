@@ -40,7 +40,7 @@ Sydney, NSW, Australia\\
 \maketitle
 
 \begin{abstract}
-Maxwell's demon was resolved by Landauer and Bennett: the demon must erase information to reuse its memory, paying $\ge \kB T\ln 2$ per bit. But this resolution assumed discrete memory states. We extend the resolution to continuous biological substrates, showing that the thermodynamic advantage of living systems arises from \emph{timing inaccessibility}: irreversibly registering fine temporal order at resolution $\Delta t$ requires exporting $\ge \kB T\ln 2$ per stabilized order bit; when the relevant couplings are sub-Landauer, extracting such records without dominating the dynamics requires measurement resources that overwhelm the coupling energies (back-action). Consequently, exponentially many micro-trajectories map to the same observable outcome (\emph{path degeneracy}). Continuous high-dimensional substrates exploit this by integrating sub-Landauer couplings during evolution and paying only at \emph{projection} (dimensional collapse to a low-dimensional output).
+Maxwell's demon was resolved by Landauer and Bennett: the demon must erase information to reuse its memory, paying $\ge \kB T\ln 2$ per bit. But this resolution assumed discrete memory states. We extend the resolution to continuous biological substrates, showing that the thermodynamic advantage of living systems arises from \emph{timing inaccessibility}: irreversibly registering fine temporal order at resolution $\Delta t$ requires dissipating $\ge \kB T\ln 2$ per stabilized order bit; when the relevant couplings are sub-Landauer, extracting such records without dominating the dynamics requires measurement resources that overwhelm the coupling energies (back-action). Consequently, exponentially many micro-trajectories map to the same observable outcome (\emph{path degeneracy}). Continuous high-dimensional substrates exploit this by integrating sub-Landauer couplings during evolution and paying only at \emph{projection} (dimensional collapse to a low-dimensional output).
 
 We derive a \textbf{Projection Bound} for quasistatic projection at effective temperature $\Teff$:
 \begin{equation}
@@ -53,7 +53,7 @@ E_{\mathrm{collapse}} \ge \kB\Teff
 \end{equation}
 which reduces under typical-set conditions to $E_{\mathrm{collapse}}\ge \kB\Teff\ln(N_{\varepsilon,\mathrm{pre}}/N_{\varepsilon,\mathrm{post}})$. Combined with a \textbf{Temporal Registration Bound} (order over $M$ bins needs $\log_2 M!$ bits), we quantify the gap: digital tracking requires \emph{thermodynamic registration} of $\log_2 G \sim D\log k$ bits (linear in $D$ but with $\sim 10^4$--$10^6\times$ practical overhead), whereas continuous substrates defer cost to projection, paying $\sim D\ln(L/\varepsilon)$ only at collapse.
 
-\textbf{Version 2.0} extends the analysis with three new arguments: (1) \emph{Framework dependence of timing}---the measurement framework itself determines what counts as ``simultaneous'' versus ``sequential,'' making temporal structure framework-relative in the same sense that falsifiability is framework-relative \cite{todd2025biosystems}. (2) \emph{The ``when'' is created, not revealed}---temporal order does not pre-exist measurement but emerges at projection, with conceptual implications for causality and agency (explored speculatively). (3) \emph{AI substrate constraints}---digital substrates cannot access the sub-Landauer integration regime regardless of scale, suggesting mechanism-level limits on what digital AI can achieve (though behavioral approximation may remain possible).
+\textbf{Version 2.0} extends the analysis with three new arguments: (1) \emph{Framework dependence of timing}---the measurement framework itself determines what counts as ``simultaneous'' versus ``sequential,'' making temporal structure framework-relative in the same sense that falsifiability is framework-relative \cite{todd2025biosystems}. (2) \emph{The ``when'' is created, not revealed}---temporal order does not pre-exist measurement but emerges at projection, with conceptual implications for causality and agency (explored speculatively). (3) \emph{AI substrate constraints}---digital substrates cannot access the sub-Landauer integration regime without shifting the projection boundary into analog/hybrid components, suggesting mechanism-level limits on what purely digital AI can achieve (though behavioral approximation may remain possible).
 
 For biologically plausible parameters, we estimate degeneracies of $10^{42}$--$10^{94}$ (protein folding) and $10^{50}$--$10^{100}$ (neural dynamics) as upper bounds under independence assumptions. The framework reconciles stochastic resonance (amplitude detection) with order inaccessibility, and clarifies why analog/neuromorphic systems gain efficiency by deferring projection.
 \end{abstract}
@@ -96,6 +96,8 @@ We consider three possibilities:
 We demonstrate (iii): biological systems maintain information as correlations in high--$D$ coherence fields and defer irreversible registration. The cost is paid when those correlations are collapsed to discrete actions --- the dimensional projection. Between acquisition and projection, information exists physically (in coupled dynamics) without bit erasure, enabling apparent sub--Landauer operation locally while preserving global thermodynamic consistency.
 
 \textbf{Central mechanism (preview).} Below the Landauer threshold ($\kB T\ln 2 \approx 2.87\times10^{-21}$\,J at 300\,K), \emph{temporal order cannot be irreversibly registered} without dissipating at least $\kB T\ln 2$ per binary timing decision. This \emph{timing inaccessibility} creates exponential path degeneracy: many micro--trajectories map to the same observable outcome. Digital systems that track order pay per recorded bit; continuous high--$D$ substrates integrate weak, sub--Landauer couplings and pay once at projection. See Lemma~\ref{lem:TRB} and Eq.~\ref{eq:PB} for the Temporal Registration Bound and the Projection Bound.
+
+\textbf{Clarification: ``sub-Landauer'' refers to timing-decision energy.} Throughout this paper, ``sub-Landauer'' refers to the \emph{energy available per timing-decision channel at the relevant bandwidth}, not to the total chemical or mechanical energy involved in the process. Protein folding involves substantial bond energies (supra-Landauer), but the energy available to distinguish \emph{which conformational transition happened when} at millisecond resolution can be sub-Landauer per decision. Similarly, neural signaling involves supra-Landauer action potentials, but the weak ephaptic couplings that may carry timing information are sub-Landauer per channel.
 
 \textbf{Critical distinction---the two-stage model:} Throughout this paper, we distinguish two stages of information processing:
 
@@ -227,7 +229,7 @@ Following Todd (2025) \cite{todd2025biosystems}, for reliable bit-level readout 
 \begin{equation}
 I_{\max} \lesssim \frac{E_{\text{meas}}}{\kB T\ln 2}
 \end{equation}
-This bound follows from the AWGN limit where reliable bit recovery (error probability bounded away from 1/2) demands $E_b/N_0 \ge \ln 2$ \cite{verdu2002,coverthomas}. \textbf{Detection capacity (AWGN, $E_b/N_0\ge \ln 2$) is separate from recording/erasure cost (Landauer, $\ge \kB T\ln 2$ per bit).} The former bounds channel capacity (cf. Verdú's $E_b/N_0 \ge \ln 2$); the latter applies when information is irreversibly stabilized as memory (Landauer's $\kB T\ln 2$).
+This bounds \emph{reliable extraction}; \emph{stabilization} then imposes $\ge \kB T\ln 2$ per recorded bit. The bound follows from the AWGN limit where reliable bit recovery (error probability bounded away from 1/2) demands $E_b/N_0 \ge \ln 2$ \cite{verdu2002,coverthomas}. \textbf{Detection capacity (AWGN, $E_b/N_0\ge \ln 2$) is separate from recording/erasure cost (Landauer, $\ge \kB T\ln 2$ per bit).} The former bounds channel capacity (cf. Verdú's $E_b/N_0 \ge \ln 2$); the latter applies when information is irreversibly stabilized as memory (Landauer's $\kB T\ln 2$).
 
 For a fixed measurement window with finite-time, finite-bandwidth channels and error probability bounded away from 1/2, when $E_{\text{meas}} \ll \kB T\ln 2$, you cannot extract even one bit reliably. This means \emph{irreversible registration of temporal order} fails---the system may still sense and integrate timing information, but cannot stabilize it as persistent memory.
 
@@ -306,11 +308,13 @@ Even if $E_{\text{signal}} \ll \kB T\ln2$ per channel, $E_{\text{total}} \gtrsim
 
 \textbf{Ephaptic coupling:} Extracellular fields $\sim 0.1$--$1$ mV/mm over neuronal membrane ($C_m \sim 1$ $\mu$F/cm$^2$) yield work $\sim 10^{-23}$--$10^{-22}$ J per neuron ($\approx 3 \times 10^{-3}$--$3 \times 10^{-2}$ times $\kB T\ln 2$) (see \cite{anastassiou2011} for field strengths and scaling).
 
-\subsection{Why Digital Systems Cannot Do This}
+\subsection{Why Purely Digital Internal State Evolution Cannot Do This}
+
+\textbf{Scope:} The following applies to architectures where all internal state transitions involve irreversible bit stabilization. Systems with analog front-ends or hybrid architectures can shift the projection boundary outward, accessing some sub-Landauer integration (see Section 9.3).
 
 Fundamental architectural difference:
 
-\textbf{Digital systems:}
+\textbf{Purely digital systems:}
 \begin{itemize}
 \item Binary bit requires $\ge \kB T\ln 2$ to be irreversibly registered
 \item Must receive supra-Landauer signals per input bit
@@ -659,6 +663,16 @@ One might attempt to resolve framework disputes by stepping back to a ``finer'' 
 
 Below the Landauer threshold, the regress \emph{physically} terminates: you cannot irreversibly register timing distinctions without spending $\ge \kB T\ln 2$ per binary decision. The sub-Landauer domain is where temporal framework dependence becomes thermodynamically enforced.
 
+\subsection{The Renormalization Group Perspective}
+
+The dependence of causal structure on temporal resolution $\Delta t$ can be formalized as a Renormalization Group (RG) flow. Let the system dynamics be described by an effective action $S_{\Delta t}[\phi]$ at timescale $\Delta t$. Changing the resolution to $\Delta t' > \Delta t$ involves integrating out high-frequency modes:
+\begin{equation}
+e^{-S_{\Delta t'}[\phi]} = \int \mathcal{D}\phi_{\text{fast}} \, e^{-S_{\Delta t}[\phi_{\text{slow}}, \phi_{\text{fast}}]}
+\end{equation}
+In standard physics, different effective theories emerge at different scales (e.g., hydrodynamics emerging from particle kinetics). Similarly, temporal causal structures are scale-dependent effective theories.
+
+Crucially, the ``true'' causal structure at the limit $\Delta t \to 0$ is thermodynamically inaccessible. As $\Delta t$ decreases below the coherence time $\tau_c$, the energy required to distinguish independent micro-states ($E_{\text{meas}}$) rises. When $E_{\text{meas}}$ exceeds the coupling energy of the system ($E_{\text{link}}$), the measurement process dominates the dynamics (back-action). The ``regress'' to finer resolutions is cut off not by logic, but by the Landauer threshold, which acts as a physical UV-cutoff for information retrieval.
+
 \subsection{Implications for Disagreement}
 
 Scientific disagreements about timing-dependent phenomena (neural coding, protein dynamics, quantum biology) may reflect framework differences rather than empirical disputes. Researchers using different temporal resolutions are not making claims about the same causal structure.
@@ -713,6 +727,22 @@ The thermodynamic framework yields three claims about AI, ordered by defensibili
 \textbf{Claim C (about typical digital computing):} Conventional digital pipelines move the projection boundary early (ADC + discrete state at input), which prevents them from exploiting the sub-Landauer pre-integration regime \emph{unless} they incorporate analog/hybrid elements.
 
 The key variable is not ``digital vs.\ analog'' but \textbf{where the projection boundary is placed} in the full system. Systems that project early pay early; systems that defer projection exploit Stage 1 integration.
+
+\subsection{The Simulation vs.\ Instantiation Gap}
+
+A common objection is that digital systems, being Turing complete, can simulate any physical process given sufficient time and memory. Therefore, if a biological system can integrate sub-Landauer signals, a digital simulation should be able to do the same.
+
+This objection confuses \emph{calculating the physics} with \emph{instantiating the mechanism}.
+
+To computationally simulate the ``Camera'' phase (Section 6.4) where a system builds correlations with environmental microstates without recording them, the digital simulation must explicitly represent the state of the environment:
+
+\begin{itemize}
+\item \textbf{Biological substrate:} The system couples to the environment. The ``memory'' of the interaction is stored in the joint physical state of the system-environment pair. This storage is thermodynamically free (reversible correlation) until measurement.
+
+\item \textbf{Digital simulation:} To track these correlations, the computer must simulate the environmental micro-trajectories (the heat bath). This expands the required state space from $N_{\text{sys}}$ to $N_{\text{sys}} \times N_{\text{env}}$.
+\end{itemize}
+
+Consequently, while a digital system can mathematically reproduce the \emph{output} of a protein folding pathway, it must expend energy proportional to the representation of the full trajectory space to do so. It cannot access the ``free'' integration because it cannot couple to the physical environment's thermal fluctuations---it must simulate them, which costs bits. The efficiency gap is not due to a lack of computational expressivity, but a lack of physical coupling.
 
 \subsection{The Digital Ceiling}
 

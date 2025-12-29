@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.12)  29 DEC 2025 16:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.12)  29 DEC 2025 16:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -451,61 +451,65 @@ d show-ing that con-tin-u-ous high-dimensional
 [4]
 
 [5]
-Overfull \hbox (11.95757pt too wide) in paragraph at lines 131--132
+
+[6]
+Overfull \hbox (11.95757pt too wide) in paragraph at lines 133--134
 []\T1/cmr/bx/n/12 Thermodynamic/engineering claim \T1/cmr/m/n/12 (Sec-tions 2--
 5): Ir-re-versibly sta-bi-liz-ing temporal-
  []
 
 
 
-[6]
-
 [7]
+
+[8]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-
-[8]
 
 [9]
 
 [10]
 
 [11]
-<figures/fig1_path_degeneracy.pdf, id=337, 808.3532pt x 511.59695pt>
+
+[12]
+<figures/fig1_path_degeneracy.pdf, id=349, 808.3532pt x 511.59695pt>
 File: figures/fig1_path_degeneracy.pdf Graphic file (type pdf)
 <use figures/fig1_path_degeneracy.pdf>
 Package pdftex.def Info: figures/fig1_path_degeneracy.pdf  used on input line 2
-64.
+66.
 (pdftex.def)             Requested size: 469.75502pt x 297.30411pt.
 
 
-[12 <./figures/fig1_path_degeneracy.pdf>]
-
-[13]
+[13 <./figures/fig1_path_degeneracy.pdf>]
 
 [14]
-Overfull \hbox (11.08011pt too wide) in paragraph at lines 343--344
+
+[15]
+Overfull \hbox (11.08011pt too wide) in paragraph at lines 347--348
 []\T1/cmr/bx/n/12 Typical-set ap-prox-i-ma-tion: \T1/cmr/m/n/12 For high-dimens
 ional sys-tems with many weakly-interacting
  []
 
 
 
-[15]
-
 [16]
 
 [17]
-<figures/fig2_projection_bound.pdf, id=545, 824.66162pt x 526.27678pt>
+
+[18]
+<figures/fig2_projection_bound.pdf, id=557, 824.66162pt x 526.27678pt>
 File: figures/fig2_projection_bound.pdf Graphic file (type pdf)
 <use figures/fig2_projection_bound.pdf>
 Package pdftex.def Info: figures/fig2_projection_bound.pdf  used on input line 
-417.
+421.
 (pdftex.def)             Requested size: 469.75502pt x 299.78012pt.
 
-Overfull \hbox (0.79124pt too wide) in paragraph at lines 422--423
+
+[19]
+Overfull \hbox (0.79124pt too wide) in paragraph at lines 426--427
 []\T1/cmr/bx/n/12 Finite-time cor-rec-tion: \T1/cmr/m/n/12 Finite-time pro-to-c
 ols add thermodynamic-length term $\OMS/cmsy/m/n/12 L[]\OML/cmm/m/it/12 =\OT1/c
 mr/m/n/12 (4\OML/cmm/m/it/12 ^^\\OT1/cmr/m/n/12 )$
@@ -513,117 +517,113 @@ mr/m/n/12 (4\OML/cmm/m/it/12 ^^\\OT1/cmr/m/n/12 )$
 
 
 
-[18]
-
-[19 <./figures/fig2_projection_bound.pdf>]
+[20 <./figures/fig2_projection_bound.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 444.
+(hyperref)                removing `math shift' on input line 448.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Omega' on input line 444.
+(hyperref)                removing `\Omega' on input line 448.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 444.
+(hyperref)                removing `math shift' on input line 448.
 
 
-
-[20]
 
 [21]
-Overfull \hbox (28.84526pt too wide) in paragraph at lines 505--506
+
+[22]
+Overfull \hbox (28.84526pt too wide) in paragraph at lines 509--510
 \T1/cmr/m/n/12 cisely where tem-po-ral res-o-lu-tion de-mands ex-ceed ther-mo-d
 y-namic ac-ces-si-bil-ity [[]]^^Vcomputational
  []
 
 
 
-[22]
-Overfull \hbox (13.18248pt too wide) in paragraph at lines 513--514
+[23]
+Overfull \hbox (13.18248pt too wide) in paragraph at lines 517--518
 \T1/cmr/m/n/12 demon-strated that min-i-mal work de-pends on changes in non-equ
 ilibrium dis-tri-bu-tions^^Valigning
  []
 
 
 
-[23]
-
 [24]
 
 [25]
-<figures/fig3_camera_engine.pdf, id=775, 798.58348pt x 603.63016pt>
+
+[26]
+<figures/fig3_camera_engine.pdf, id=787, 798.58348pt x 603.63016pt>
 File: figures/fig3_camera_engine.pdf Graphic file (type pdf)
 <use figures/fig3_camera_engine.pdf>
-Package pdftex.def Info: figures/fig3_camera_engine.pdf  used on input line 561
+Package pdftex.def Info: figures/fig3_camera_engine.pdf  used on input line 565
 .
 (pdftex.def)             Requested size: 469.75502pt x 355.07948pt.
 
 
-[26 <./figures/fig3_camera_engine.pdf>]
-<figures/fig4_energy_scaling.pdf, id=894, 736.39178pt x 479.71222pt>
+[27 <./figures/fig3_camera_engine.pdf>]
+<figures/fig4_energy_scaling.pdf, id=906, 736.39178pt x 479.71222pt>
 File: figures/fig4_energy_scaling.pdf Graphic file (type pdf)
 <use figures/fig4_energy_scaling.pdf>
-Package pdftex.def Info: figures/fig4_energy_scaling.pdf  used on input line 58
-9.
+Package pdftex.def Info: figures/fig4_energy_scaling.pdf  used on input line 59
+3.
 (pdftex.def)             Requested size: 469.75502pt x 306.01927pt.
 
 
-[27]
+[28]
 
-[28 <./figures/fig4_energy_scaling.pdf>]
-
-[29]
+[29 <./figures/fig4_energy_scaling.pdf>]
 
 [30]
 
 [31]
-<figures/fig5_framework_timing.pdf, id=1080, 798.58348pt x 523.4506pt>
+
+[32]
+<figures/fig5_framework_timing.pdf, id=1092, 798.58348pt x 523.4506pt>
 File: figures/fig5_framework_timing.pdf Graphic file (type pdf)
 <use figures/fig5_framework_timing.pdf>
 Package pdftex.def Info: figures/fig5_framework_timing.pdf  used on input line 
-670.
+684.
 (pdftex.def)             Requested size: 469.75502pt x 307.91464pt.
 
 
-[32 <./figures/fig5_framework_timing.pdf>]
-
 [33]
 
-[34]
+[34 <./figures/fig5_framework_timing.pdf>]
 
 [35]
 
 [36]
 
 [37]
-Overfull \hbox (23.43272pt too wide) in paragraph at lines 771--772
+
+[38]
+
+[39]
+
+[40]
+Overfull \hbox (23.43272pt too wide) in paragraph at lines 801--802
 []\T1/cmr/m/n/12 The bi-o-log-i-cal de-mon uses high-dimensional sub-strates to
  ef-fi-ciently com-pute high-dimensional
  []
 
 
-Overfull \hbox (7.14775pt too wide) in paragraph at lines 773--774
+Overfull \hbox (7.14775pt too wide) in paragraph at lines 803--804
 []\T1/cmr/m/n/12 Digital com-put-ers use low-dimensional sub-strates (bit strin
 gs) to sim-u-late high-dimensional
  []
 
 
 
-[38]
-
-[39]
-Overfull \hbox (13.84279pt too wide) in paragraph at lines 791--792
+[41]
+Overfull \hbox (13.84279pt too wide) in paragraph at lines 821--822
 []\T1/cmr/bx/n/12 v1.0 \T1/cmr/m/n/12 (Novem-ber 2025): Pub-lished in BioSys-te
 ms. DOI: 10.1016/j.biosystems.2025.105632 
  []
 
 
-
-[40]
-
-[41]
 
 [42]
 
@@ -636,7 +636,13 @@ ms. DOI: 10.1016/j.biosystems.2025.105632
 [46]
 
 [47]
-Overfull \hbox (4.01573pt too wide) in paragraph at lines 1064--1065
+
+[48]
+
+[49]
+
+[50]
+Overfull \hbox (4.01573pt too wide) in paragraph at lines 1094--1095
 []\T1/cmr/bx/n/12 Collapse: \T1/cmr/m/n/12 Ther-mo-dy-namic cost ap-pears at na
 -tive state sta-bi-liza-tion. Es-ti-mated $\OT1/cmr/m/n/12 ^^A\OML/cmm/m/it/12 
 G[] \OMS/cmsy/m/n/12 ^^X
@@ -644,54 +650,52 @@ G[] \OMS/cmsy/m/n/12 ^^X
 
 
 
-[48]
+[51]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1096.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 1096.
+(hyperref)                removing `math shift' on input line 1126.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1096.
+(hyperref)                removing `subscript' on input line 1126.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1096.
+(hyperref)                removing `math shift' on input line 1126.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\kappa' on input line 1096.
+(hyperref)                removing `math shift' on input line 1126.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1096.
+(hyperref)                removing `\kappa' on input line 1126.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1126.
 
 
 
-[49]
+[52]
 
-[50]
-
-[51] (./timing_inaccessibility_v2.aux)
+[53] (./timing_inaccessibility_v2.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `timing_inaccessibility_v2.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: 4CCBD03542DC193AFDF2E1936A6F31BB;11569.
+(rerunfilecheck)             Checksum: B02BA3C3296891AAED6EBD4D17CC7F03;12200.
  ) 
 Here is how much of TeX's memory you used:
- 11021 strings out of 474662
- 167791 string characters out of 5751108
- 562604 words of memory out of 5000000
- 33698 multiletter control sequences out of 15000+600000
+ 11028 strings out of 474662
+ 167877 string characters out of 5751108
+ 562605 words of memory out of 5000000
+ 33700 multiletter control sequences out of 15000+600000
  581053 words of font info for 94 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 75i,14n,79p,1037b,589s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,14n,79p,1037b,603s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/iantodd/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen
 /ec/ecrm0600.600pk> </Users/iantodd/Library/texlive/2025basic/texmf-var/fonts/p
 k/ljfour/jknappen/ec/ecti0800.600pk> </Users/iantodd/Library/texlive/2025basic/
@@ -721,13 +725,14 @@ st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025basic/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025basic/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025bas
-ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025
-basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/tex
-live/2025basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on timing_inaccessibility_v2.pdf (51 pages, 705464 bytes).
+ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025
+basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
+025basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/
+texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on timing_inaccessibility_v2.pdf (53 pages, 721488 bytes).
 PDF statistics:
- 2064 PDF objects out of 2073 (max. 8388607)
- 792 compressed objects within 8 object streams
- 223 named destinations out of 1000 (max. 500000)
- 450 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2097 PDF objects out of 2487 (max. 8388607)
+ 810 compressed objects within 9 object streams
+ 228 named destinations out of 1000 (max. 500000)
+ 466 words of extra memory for PDF output out of 10000 (max. 10000000)
 

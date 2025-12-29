@@ -1,0 +1,809 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{setspace}
+\doublespacing
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\numberwithin{equation}{section}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+% Math macros for consistency
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\Teff}{T_{\mathrm{eff}}}
+\newcommand{\KL}[2]{\mathrm{KL}\!\left(#1\,\|\,#2\right)}
+
+\title{Timing Inaccessibility and the Projection Bound: Resolving Maxwell's Demon for Continuous Biological Substrates}
+
+\author{Ian Todd\\
+Sydney Medical School\\
+University of Sydney\\
+Sydney, NSW, Australia\\
+\texttt{itod2305@uni.sydney.edu.au}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We show that the thermodynamic advantage of biological, continuous substrates over digital simulators arises from \emph{timing inaccessibility}: below the Landauer threshold, temporal order cannot be irreversibly registered without dissipating $\ge \kB T\ln 2$ per binary decision. Consequently, exponentially many micro-trajectories map to the same observable outcome (\emph{path degeneracy}). Continuous high-dimensional substrates exploit this by integrating sub-Landauer couplings during evolution and paying only at \emph{projection} (dimensional collapse to a low-dimensional output).
+
+We derive a \textbf{Projection Bound} for quasistatic projection at effective temperature $\Teff$:
+\begin{equation}
+E_{\mathrm{collapse}} \ge \kB\Teff
+\left(
+\ln \tfrac{N_{\varepsilon,\mathrm{pre}}}{N_{\varepsilon,\mathrm{post}}}
+- \KL{p^{\mathrm{pre}}}{U_{\mathrm{pre}}}
++ \KL{p^{\mathrm{post}}}{U_{\mathrm{post}}}
+\right)
+\end{equation}
+which reduces under typical-set conditions to $E_{\mathrm{collapse}}\ge \kB\Teff\ln(N_{\varepsilon,\mathrm{pre}}/N_{\varepsilon,\mathrm{post}})$. Combined with a \textbf{Temporal Registration Bound} (order over $M$ bins needs $\log_2 M!$ bits), we quantify the gap: enumerative digital tracking scales exponentially with dimension, whereas projection cost scales like $\ln G\sim D$.
+
+For biologically plausible parameters, we estimate degeneracies of $10^{42}$--$10^{94}$ (protein folding) and $10^{50}$--$10^{100}$ (neural dynamics) as upper bounds under independence assumptions. The framework reconciles stochastic resonance (amplitude detection) with order inaccessibility, and clarifies why analog/neuromorphic systems gain efficiency by deferring projection.
+\end{abstract}
+
+\textbf{Keywords:} Maxwell's demon, timing inaccessibility, path degeneracy, Landauer principle, dimensional collapse
+
+\section*{Significance}
+
+\textbf{What's new?} A geometric thermodynamic bound showing that continuous high-dimensional substrates pay once at projection, not per micro-decision.
+
+\textbf{Why it matters?} It explains biology's energy efficiency without violating the second law: sense weakly (sub-Landauer), integrate across many modes, and collapse late.
+
+\textbf{Numbers:} Order-of-magnitude path degeneracies of $10^{42}$--$10^{94}$ (proteins) and $10^{50}$--$10^{100}$ (neural) arise for typical $(D_{\mathrm{eff}}, \tau_c, \Delta t)$ (see Appendix A for parameter sensitivity).
+
+\textbf{Testable:} (i) $\tau_c \uparrow$ → accuracy $\uparrow$; (ii) $D_{\mathrm{eff}}$ shifts across frequency-specific constraint channels with task; (iii) decision-time heat $\approx \kB\Teff\ln(N_{\mathrm{pre}}/N_{\mathrm{post}})$ at attojoule scale ($\sim 0.03$--$1$ aJ). For example, ordering $M{=}10$ bins requires $\log_2(10!) \cdot \kB T\ln 2 \approx 6.3\times10^{-20}$ J ($0.063$ aJ) at 300\,K, representing a lower-end example within this range.
+
+\section{Introduction}
+
+High-dimensional systems exist as physical and mathematical objects. When you need to compute what such a system does, you face an implementation choice: simulate it on a low-dimensional digital substrate (bit strings), or instantiate it physically as a high-dimensional system. This paper quantifies the thermodynamic efficiency gap between these approaches.
+
+\subsection{The Biological Maxwell's Demon}
+
+Living systems operate in a Maxwell--demon--like mode. They:
+\begin{itemize}
+\item create local order (cells, organisms, structured neural activity) from stochastic environments,
+\item extract work from thermal and chemical gradients,
+\item maintain far-from-equilibrium organization over decades, and
+\item process information to guide adaptive responses.
+\end{itemize}
+
+\noindent The energetic puzzle is stark: a human brain performs sophisticated computations at $\sim\!20$\,W, whereas comparable digital systems require orders of magnitude more power \cite{horowitz2014,frank2019}. If biological systems \emph{acquired and recorded} information as discrete bits, Landauer's principle would demand a dissipation of at least $\kB T\ln 2$ per bit. Yet measured neural energetics are far below what such pervasive bit--level bookkeeping would imply.
+
+We consider three possibilities:
+\begin{enumerate}
+\item \textbf{Physics violation} --- biology evades the second law (ruled out empirically).
+\item \textbf{Hidden costs} --- the energy is dissipated elsewhere, unmeasured (possible but unparsimonious).
+\item \textbf{Different accounting} --- continuous high--dimensional substrates store and use information as \emph{structural correlations}, not as stabilized bits; the thermodynamic payment appears only at \emph{projection} (this paper's thesis).
+\end{enumerate}
+
+We demonstrate (iii): biological systems maintain information as correlations in high--$D$ coherence fields and defer irreversible registration. The cost is paid when those correlations are collapsed to discrete actions --- the dimensional projection. Between acquisition and projection, information exists physically (in coupled dynamics) without bit erasure, enabling apparent sub--Landauer operation locally while preserving global thermodynamic consistency.
+
+\textbf{Central mechanism (preview).} Below the Landauer threshold ($\kB T\ln 2 \approx 2.87\times10^{-21}$\,J at 300\,K), \emph{temporal order cannot be irreversibly registered} without dissipating at least $\kB T\ln 2$ per binary timing decision. This \emph{timing inaccessibility} creates exponential path degeneracy: many micro--trajectories map to the same observable outcome. Digital systems that track order pay per recorded bit; continuous high--$D$ substrates integrate weak, sub--Landauer couplings and pay once at projection. See \cref{lem:TRB,eq:PB} for the Temporal Registration Bound and the Projection Bound.
+
+\textbf{Critical distinction:} Throughout this paper, ``sub-Landauer detection'' refers to reversible coupling and integration that does not leave a persistent record. Energy costs enter when order or state is \emph{stabilized as memory} (logically irreversible projection). This distinction resolves apparent paradoxes: biological systems can sense and integrate weak signals while deferring the thermodynamic cost of recording.
+
+\medskip
+\noindent\textit{Scope note.} ``Maxwell's demon'' here is a metaphor for correlation--enabled work extraction under correct thermodynamic accounting; no violation of the second law is implied.
+
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue!60!black,title={Main Results}]
+\textbf{Temporal Registration Bound (TRB):} Irreversibly recording the total order of $M$ temporal bins requires $\log_2(M!)$ bits (by Stirling: $\log_2(M!) \ge M\log_2 M - M\log_2 e$ for large $M$), hence:
+\begin{equation}
+E_{\min}^{\mathrm{time}} \ge \kB T\ln 2 \cdot \log_2(M!) \label{eq:TRB}
+\end{equation}
+
+\textbf{Projection Bound (PB):} Quasistatic projection from $N_{\varepsilon,\mathrm{pre}}$ to $N_{\varepsilon,\mathrm{post}}$ distinguishable states dissipates:
+\begin{equation}
+E_{\mathrm{collapse}} \ge \kB\Teff \ln\!\big(N_\varepsilon(D_{\mathrm{eff}})/N_\varepsilon(D')\big) \label{eq:PB}
+\end{equation}
+under typical-set approximation (equiprobable cells).
+
+\textbf{Path Degeneracy Scaling:} With coherence time $\tau_c$ and temporal resolution $\Delta t$:
+\begin{equation}
+\Omega(\Delta t) \sim \exp\!\left[\frac{D_{\mathrm{eff}}(\Delta t)}{\kappa}\,\ln\!\frac{\tau_c}{\Delta t}\right] \label{eq:omega}
+\end{equation}
+where $\kappa \ge 1$ accounts for correlations.
+\end{tcolorbox}
+
+\subsection{Efficiency Gap: Where the Energy Goes}
+
+\textbf{Digital algorithm tracking the path:}
+\begin{itemize}
+\item To uniquely index among $G$ options: $\log_2 G$ bits required
+\item Protein folding: $\log_2(10^{48\text{--}100}) \approx 160$--$332$ bits
+\item Energy dissipated during tracking: $E_{\text{digital}} \gtrsim (160\text{--}332) \kB T\ln 2 \approx 4.6\times10^{-19}$--$9.5 \times 10^{-19}$ J (ideal Landauer floor; practical CMOS is $10^4$--$10^6\times$ higher, while fully reversible logic can approach the floor only with severe speed and noise-tolerance tradeoffs \cite{bennett1982,frank2019})
+\item This applies even if history is later discarded—the cost was paid during recording
+\end{itemize}
+
+\textbf{Continuous substrate (deferred projection):}
+\begin{itemize}
+\item System samples all $\sim 10^{48}$--$10^{100}$ conformations via thermal fluctuations
+\item No irreversible records made during exploration
+\item Pay only at projection: $E_{\text{cont}} \ge \kB\Teff\ln 2$ for binary collapse ("native" vs. "misfolded")
+\end{itemize}
+
+\textbf{Efficiency gain:} $\sim 160$--$330\times$ at theoretical Landauer limit. Contemporary CMOS operates at $\sim 10^4$--$10^6\times$ Landauer limit, raising practical gap to $\sim 10^5$--$10^{8}\times$ \cite{horowitz2014,frank2019}. While adiabatic reversible computing could theoretically narrow this gap \cite{bennett1982,frank2019}, practical implementations face severe speed and noise-tolerance tradeoffs. Digital architectures pay per recorded bit; continuous substrates defer recording and pay at projection. Analog/neuromorphic systems likewise gain efficiency by deferring discretization to the projection boundary.
+
+\subsection{Notation and Conventions}
+
+\begin{table}[h]
+\centering
+\caption{Key symbols and definitions}
+\label{tab:notation}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Symbol & Definition \\
+\midrule
+$\kB T\ln 2$ & Landauer bound per bit ($\approx 2.87 \times 10^{-21}$ J at 300\,K) \\
+$T$ & Bath temperature (K); used in TRB \\
+$\Teff(\omega)$ & Effective temperature at frequency $\omega$ via FDT (K); defined \\
+ & operationally at collapse mode; used in PB \\
+$D_{\text{eff}}$ & Effective dimensionality, $(\sum_i \lambda_i)^2/\sum_i \lambda_i^2$ \\
+$D'$ & Post-collapse effective dimensionality (output manifold dimension) \\
+$N_\varepsilon$ & Covering number: count of $\varepsilon$-balls covering manifold \\
+$G, \Omega$ & Path degeneracy (number of micro-trajectories per macro-outcome); \\
+ & used synonymously \\
+$\tau_c$ & Coherence time, $\int_0^\infty \langle r(t)r(0)\rangle dt$ (s) \\
+$\Delta t$ & Temporal resolution (s) \\
+$\kappa$ & Correlation factor $\ge 1$ (reduces degeneracy from independence) \\
+$\varepsilon$ & Coarse-graining resolution \\
+$L$ & System size (same units as $\varepsilon$; $L/\varepsilon$ is dimensionless) \\
+$\xi$ & Correlation (coherence) length in capacity expressions \\
+\midrule
+\multicolumn{2}{l}{\textbf{Conventions:}} \\
+\multicolumn{2}{l}{Natural logarithms (nats) unless stated; $\log_2 x = \ln x/\ln 2 \approx 1.443\ln x$} \\
+\multicolumn{2}{l}{Energy: $\kB T$ per nat or $\kB T\ln 2$ per bit} \\
+\multicolumn{2}{l}{Typical set: high-probability subset under source measure (Cover \& Thomas)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Roadmap}
+
+Section 2 formalizes timing inaccessibility. Section 3 derives the Projection Bound. Section 4 quantifies path degeneracy. Section 5 gives a continuous (Kuramoto) example. Section 6 relates to prior work and discusses implications including camera-engine duality. Appendix A provides parameter sensitivity analysis for degeneracy estimates. Appendix B describes biological implementations across scales. Appendix C provides methods for estimating $D_{\mathrm{eff}}$ and $\kappa$ from data.
+
+\section{Timing Inaccessibility: The Physical Mechanism}
+
+\subsection{Why Temporal Order Costs More Than Amplitude}
+
+Following Todd (2025) \cite{todd2025biosystems}, measurement at energy $E_{\text{meas}}$ extracts information bounded by:
+\begin{equation}
+I_{\max} \lesssim \frac{E_{\text{meas}}}{\kB T\ln 2}
+\end{equation}
+consistent with the AWGN limit where reliable bit recovery demands $E_b/N_0 \ge \ln 2$ \cite{verdu2002,coverthomas}. \textbf{Detection capacity (AWGN, $E_b/N_0\ge \ln 2$) is separate from recording/erasure cost (Landauer, $\ge \kB T\ln 2$ per bit).} The former bounds channel capacity (cf. Verdú's $E_b/N_0 \ge \ln 2$); the latter applies when information is irreversibly stabilized as memory (Landauer's $\kB T\ln 2$).
+
+When $E_{\text{meas}} \ll \kB T\ln 2$, you cannot extract even one bit reliably. This means timing resolution fails.
+
+\begin{lemma}[Temporal Registration Bound]
+\label{lem:TRB}
+To irreversibly register the temporal order of $M$ bins requires at least $H \ge \log_2(M!)$ bits. By Landauer's principle, the minimal dissipated energy is:
+\begin{equation}
+E_{\min}^{\mathrm{time}} \ge \kB T\ln 2 \cdot \log_2(M!)
+\end{equation}
+
+For partial order distinguishing equivalence classes of sizes $m_j$:
+\begin{equation}
+E_{\min}^{\mathrm{time}} \ge \kB T\ln 2 \cdot \log_2\!\left(\frac{M!}{\prod_j m_j!}\right)
+\end{equation}
+
+At sub-Landauer energies where $E_{\text{meas}} \ll \kB T\ln 2$, the number of binary timing decisions that can be irreversibly registered approaches zero.
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+There are $M!$ possible total orders of $M$ bins. Uniquely specifying one order requires $H = \log_2(M!)$ bits (by Stirling: $\log_2(M!) \approx M\log_2 M - M\log_2 e$). Irreversibly writing these bits dissipates at least $\kB T\ln 2$ per bit by Landauer's principle \cite{landauer1961}.
+\end{proof}
+
+\textbf{Clarification:} A reversible comparator that leaves no persistent record can, in principle, avoid dissipation. The energetic bound applies when the order is \emph{stabilized as memory} (logically irreversible).
+
+\textbf{Concrete example:} At $T = 300\,\mathrm{K}$, ordering $M=10$ bins minimally dissipates $\log_2(10!) \cdot \kB T\ln 2 \approx 21.8 \times 2.87 \times 10^{-21}$ J $\approx 6.3 \times 10^{-20}$ J.
+
+\subsection{Stochastic Resonance: Why It Detects Amplitude But Not Order}
+
+\textbf{Natural objection:} If stochastic resonance enables detection of sub-Landauer signals through population integration \cite{mcdonnell2011,stocks2000}, doesn't this eliminate path degeneracy?
+
+\textbf{Answer: No.} Stochastic resonance provides:
+\begin{itemize}
+\item Amplitude/presence detection (SNR $\sim \sqrt{N}$ scaling)
+\item Population-level integration across $N$ coupled units
+\item Knowledge that coordination occurred
+\end{itemize}
+
+It \emph{cannot} provide:
+\begin{itemize}
+\item Timing of individual events (which fluctuation occurred when)
+\item Temporal ordering (did event A precede B?)
+\item Which specific coordination pattern was realized
+\end{itemize}
+
+For $M=10$ temporal bins, distinguishing all orderings requires $\log_2(10!) \approx 21.8$ bits, costing $\ge 6.3\times10^{-20}$ J. If individual signal energies are $E \sim 10^{-23}$ J (sub-Landauer), measurement energy exceeds signal energy by $6000\times$. Population integration can detect \emph{that} 10 events occurred, but not \emph{when} or in what order.
+
+\subsection{High Dimensionality: The Key to Sub-Landauer Sensing}
+
+\textbf{The puzzle:} If individual events are sub-Landauer, how does the system sense anything?
+
+\textbf{The solution:} The physical substrate is formally infinite-dimensional with power-law mode distribution. At any finite energy/temporal resolution, $D_{\text{eff}}$ is finite and grows with precision. At energy threshold $E_{\text{thresh}}$, a finite number of modes $D_{\text{eff}}(E_{\text{thresh}})$ carry energy $\ge E_{\text{thresh}}$.
+
+With $D_{\text{eff}}$ accessible modes, a signal of energy $E_{\text{signal}} \ll k_BT\ln 2$ per component can still be detected if integrated:
+\begin{equation}
+E_{\text{total}} \approx N_{\text{eff}} \, E_{\text{signal}}, \qquad 
+N_{\text{eff}} \propto D_{\text{eff}} \times \ln\!\frac{\tau_c}{\Delta t}
+\end{equation}
+
+Even if $E_{\text{signal}} \ll \kB T\ln2$ per channel, $E_{\text{total}} \gtrsim \kB T\ln2$ achieves detectability.
+
+\textbf{Example:} Neural population with $D_{\text{eff}} \sim 1000$ accessible modes can detect signals where each mode receives only $E_{\text{signal}} \sim 10^{-3} \kB T\ln 2$ because population integration yields effective energy $E_{\text{total}} \sim 1000 \times 10^{-3} \kB T\ln 2 = \kB T\ln 2$, meeting the detection threshold.
+
+\textbf{Ephaptic coupling:} Extracellular fields $\sim 0.1$--$1$ mV/mm over neuronal membrane ($C_m \sim 1$ $\mu$F/cm$^2$) yield work $\sim 10^{-23}$--$10^{-22}$ J per neuron ($\approx 3 \times 10^{-3}$--$3 \times 10^{-2}$ times $\kB T\ln 2$) (see \cite{anastassiou2011} for field strengths and scaling).
+
+\subsection{Why Digital Systems Cannot Do This}
+
+Fundamental architectural difference:
+
+\textbf{Digital systems:}
+\begin{itemize}
+\item Binary bit requires $\ge \kB T\ln 2$ to be irreversibly registered
+\item Must receive supra-Landauer signals per input bit
+\item Cannot integrate sub-Landauer signals across channels without first amplifying each channel above threshold (costs energy)
+\item Must discretize each input above Landauer threshold before processing
+\end{itemize}
+
+\textbf{Continuous high-D systems:}
+\begin{itemize}
+\item Can couple weakly (sub-Landauer per link) to many sources
+\item Integrate via population dynamics
+\item Collapse only at output
+\item Pay for dimensional reduction, not per-interaction bit registration
+\end{itemize}
+
+The degeneracy is not a bug—it's what enables weak coupling to be computationally useful. Path degeneracy and sensing capability are coupled: exponentially many microstates allow sensitivity to distributed sub-Landauer perturbations.
+
+\section{The Projection Bound}
+
+\subsection{What Are We Paying For?}
+
+When forcing a high-dimensional system to produce a low-dimensional output, you must dissipate heat. The cost has three components:
+
+\textbf{1. Geometric squashing} ($\ln N_{\varepsilon,\text{pre}}/N_{\varepsilon,\text{post}}$): How many configurations are you destroying? For continuous manifolds, $N_\varepsilon \sim (L/\varepsilon)^{D_{\text{eff}}}$ where $L/\varepsilon$ is dimensionless.
+
+\textbf{2. Pre-collapse non-uniformity} ($-\text{KL}(p^{\text{pre}} \| U_{\text{pre}})$): Were you using all states uniformly? If the system had a heavy-tailed distribution, you were effectively more constrained than geometry suggests. This \emph{lowers} the bound (you've already "paid" some entropy reduction).
+
+\textbf{3. Post-collapse specificity} ($+\text{KL}(p^{\text{post}} \| U_{\text{post}})$): How peaked is your final state? This \emph{increases} the bound—you're creating more order.
+
+\textbf{Typical-set approximation:} For high-dimensional systems with many weakly-interacting modes, equipartition and maximum entropy drive toward near-uniform occupancy. When both pre- and post-collapse distributions are approximately uniform, KL terms vanish and you get the clean geometric bound.
+
+\subsection{Effective Temperature: Operational Definition}
+
+For systems out of equilibrium, define $\Teff$ operationally via the fluctuation-dissipation relation \cite{seifert2012}:
+\begin{equation}
+S_\eta(\omega) = 2 \kB \Teff(\omega)\, \operatorname{Re}[\Gamma(\omega)]
+\end{equation}
+where $S_\eta(\omega)$ is noise power spectral density, $\operatorname{Re}[\Gamma(\omega)]$ is the dissipative component of linear response, and $\Gamma(\omega)$ describes how the system responds to weak perturbations: $\langle x(\omega) \rangle = \Gamma(\omega) F(\omega)$.
+
+\textbf{Measurement protocol:}
+\begin{enumerate}
+\item Measure noise spectrum $S_\eta(\omega)$
+\item Apply weak sinusoidal perturbation at $\omega_0$ (e.g., inject 50--200 pA membrane-equivalent drive in cortical slice)
+\item Measure phase-resolved response to extract $\operatorname{Re}[\Gamma(\omega_0)]$
+\item Ratio gives $\Teff(\omega_0) = S_\eta(\omega_0)/(2\kB\operatorname{Re}[\Gamma(\omega_0)])$—an observable, not a fitted parameter
+\end{enumerate}
+
+In equilibrium: $T_{\mathrm{eff}}=T$. Out of equilibrium: $T_{\mathrm{eff}}(\omega)$ is operational, evaluated at collapse mode $\omega_0$. Note that in active biological systems driven by ATP hydrolysis or other energy sources, $\Teff$ can exceed ambient temperature $T$ \cite{seifert2012}, reflecting enhanced effective noise from non-thermal fluctuations.
+
+\subsection{Main Theorem}
+
+\begin{theorem}[Projection Bound for Continuous Systems]
+\label{thm:projection}
+Let $\{C_i\}_{i=1}^{N_\varepsilon}$ be an $\varepsilon$-coarse graining of the accessible manifold and $p^{\mathrm{pre}},p^{\mathrm{post}}$ be the pre/post distributions over cells. For a quasistatic projection that reduces support from $N_{\varepsilon,\mathrm{pre}}$ to $N_{\varepsilon,\mathrm{post}}$, the mean dissipated heat at effective temperature $\Teff$ (evaluated at the dominant collapse mode $\omega_0$) satisfies:
+\begin{equation}
+\boxed{E_{\mathrm{collapse}} \;\ge\; \kB\Teff
+\left(
+\ln \tfrac{N_{\varepsilon,\mathrm{pre}}}{N_{\varepsilon,\mathrm{post}}}
+- \KL{p^{\mathrm{pre}}}{U_{\mathrm{pre}}}
++ \KL{p^{\mathrm{post}}}{U_{\mathrm{post}}}
+\right)}
+\label{eq:master}
+\end{equation}
+where $U_{\mathrm{pre/post}}$ are uniform on their supports. (This reproduces \eqref{eq:PB} under the typical-set approximation.)
+
+Under typical-set approximation (equiprobable cells):
+\begin{equation}
+E_{\mathrm{collapse}} \ge \kB\Teff \ln\!\big(N_\varepsilon(D_{\mathrm{eff}})/N_\varepsilon(D')\big)
+\end{equation}
+
+With power-law covering, $N_\varepsilon \sim (L/\varepsilon)^D$ for fixed $L/\varepsilon$:
+\begin{equation}
+E_{\mathrm{collapse}} \geq \kB\Teff (D_{\mathrm{eff}} - D') \ln(L/\varepsilon)
+\end{equation}
+\end{theorem}
+
+\begin{proof}[Proof outline]
+\textbf{Step 1:} Define coarse-grained entropy as $S_\varepsilon = \kB(\ln N_\varepsilon - \mathrm{KL}(p\|U))$ where $U$ is uniform over the $N_\varepsilon$ cells.
+
+\textbf{Step 2:} The projection reduces support and alters $p$:
+\begin{align}
+\Delta S_{\mathrm{sys}} &= S_\varepsilon^{\mathrm{post}} - S_\varepsilon^{\mathrm{pre}} \\
+&= \kB[\ln N_{\varepsilon,\mathrm{post}} - \ln N_{\varepsilon,\mathrm{pre}} - \mathrm{KL}(p^{\mathrm{post}}\|U_{\mathrm{post}}) + \mathrm{KL}(p^{\mathrm{pre}}\|U_{\mathrm{pre}})]
+\end{align}
+
+\textbf{Step 3:} By the second law: $\Delta S_{\mathrm{env}} \ge -\Delta S_{\mathrm{sys}}$.
+
+\textbf{Step 4:} Integrating heat at $\Teff$ gives $E_{\mathrm{collapse}} = \Teff\Delta S_{\mathrm{env}} \ge -\Teff\Delta S_{\mathrm{sys}}$, yielding \cref{eq:master}.
+\end{proof}
+
+\textbf{Classical limit:} Binary system with $N_\varepsilon = 2 \to 1$ recovers $k_BT\ln 2$.
+
+\textbf{Finite-time correction:} Finite-time protocols add thermodynamic-length term $\mathcal{L}^2/(4\tau)$ \cite{sivak2012}. For neural decisions at $\tau \sim$ ms timescales with typical $\mathcal{L} \sim 10$, excess dissipation $\sim 10^{-20}$ J is small compared to quasistatic bound ($\sim 10^{-19}$--$10^{-18}$ J for $D_{\text{eff}} \sim 50$--$200$).
+
+\section{Path Degeneracy: Quantifying the Inaccessible}
+
+\subsection{Definition and Scaling}
+
+At coarse-graining $\varepsilon$ over window with temporal resolution $\Delta t$, $\Omega(\Delta t)$ is the number of resolution-distinguishable micro-trajectories consistent with the same macro-outcome.
+
+For continuous manifold $\mathcal{M}$, the metric $\varepsilon$-entropy \cite{kolmogorov1959}:
+\begin{equation}
+H_\varepsilon = \ln N_\varepsilon(\mathcal{M}), \quad N_\varepsilon \sim \left(\frac{L}{\varepsilon}\right)^{D_{\text{eff}}}
+\end{equation}
+with $L/\varepsilon$ dimensionless.
+
+As $\varepsilon$ decreases, $N_\varepsilon$ grows exponentially. Systems with large $D_{\text{eff}}$ exhibit exponentially more distinguishable configurations.
+
+For oscillator system with coherence time $\tau_c$ and temporal resolution $\Delta t$, the time-bandwidth product $\tau_c/\Delta t$ bounds independent temporal modes \cite{slepian1961}, yielding:
+\begin{equation}
+\Omega(\Delta t) \sim \exp\left[\frac{D_{\text{eff}}(\Delta t)}{\kappa} \ln\frac{\tau_c}{\Delta t}\right]
+\end{equation}
+where $\kappa \geq 1$ accounts for correlations.
+
+\subsection{Neural-Scale Example}
+
+Consider neural dynamics with:
+\begin{itemize}
+\item Coherence time: $\tau_c \sim 100$ ms
+\item Coarse temporal resolution: $\Delta t_{\text{coarse}} = 20$ ms
+\item Fine temporal resolution: $\Delta t_{\text{fine}} = 0.1$ ms
+\item Dimensionality increase: $\Delta D_{\text{eff}} \approx 50$ (consistent with \cite{stringer2019})
+\item Correlation redundancy: $\kappa \sim 2$ (estimated from phase-shuffle surrogates)
+\end{itemize}
+
+Path degeneracy ratio:
+\begin{align}
+\text{Ratio} &\sim \exp\left[\frac{\Delta D_{\text{eff}}}{\kappa} \ln\left(\frac{\tau_c/\Delta t_{\text{fine}}}{\tau_c/\Delta t_{\text{coarse}}}\right)\right] \nonumber\\
+&= \exp\left[\frac{50}{2} \times \ln(200)\right] \approx 10^{58}
+\end{align}
+
+\textbf{Interpretation:} One observable spike train at coarse resolution (20 ms bins) corresponds to $\sim 10^{58}$ distinguishable micro-trajectories at fine resolution (0.1 ms bins). This falls within the $10^{50}$--$10^{100}$ range cited in the abstract (see Appendix A for full parameter sensitivity showing how variations in $D_{\text{eff}}$, $\kappa$, and temporal resolution produce this range).
+
+\section{Example: Kuramoto Oscillators}
+
+Consider $N$ coupled phase oscillators:
+\begin{equation}
+\frac{d\theta_i}{dt} = \omega_i + \frac{K}{N}\sum_{j=1}^N \sin(\theta_j - \theta_i) + \eta_i(t)
+\end{equation}
+where $\langle\eta_i(t)\eta_j(t')\rangle = 2D\delta_{ij}\delta(t-t')$. State space is the $N$-torus $\mathcal{T}^N$.
+
+Order parameter: $r e^{i\Psi} = \frac{1}{N}\sum_{j=1}^N e^{i\theta_j}$
+
+At angular resolution $\Delta\theta$, one macroscopic configuration $(r, \Psi)$ corresponds to:
+\begin{equation}
+N_{\Delta\theta} \sim \left(\frac{2\pi}{\Delta\theta}\right)^{D_{\text{eff}}}
+\end{equation}
+distinguishable microstates.
+
+\textbf{Effective dimensionality:}
+\begin{itemize}
+\item Synchronized regime (strong coupling, $r \approx 1$): $D_{\text{eff}} \approx 2$ (Ott-Antonsen manifold for Lorentzian $g(\omega)$ under analyticity assumptions \cite{ott2008,ott2009})
+\item Incoherent regime (weak coupling, $r \approx 0$): $D_{\text{eff}} \approx N$
+\item Intermediate coupling: $2 < D_{\text{eff}} < N$
+\end{itemize}
+
+When the system collapses from exploring the full $D_{\text{eff}}$-dimensional manifold to a measurement outcome:
+\begin{equation}
+E_{\text{collapse}} \geq \kB \Teff (D_{\text{eff}} - D') \ln(2\pi/\Delta\theta)
+\end{equation}
+
+This is the continuous analog of Landauer's bound—fully geometric, no discrete bits. Recent computational approaches encounter numerical failures ("covariance explosion") precisely where temporal resolution demands exceed thermodynamic accessibility \cite{bian2025ddga}—computational evidence for the bounds derived here.
+
+\section{Relation to Prior Work and Implications}
+
+\subsection{Information-Theoretic Demons}
+
+Prior continuous demons \cite{parrondo1996,vaikuntanathan2009,allahverdyan2009} quantify costs via mutual information. Our contribution: (i) classical biological substrate at 300K, (ii) metric-entropy covering numbers at finite resolution, (iii) timing inaccessibility as mechanism, (iv) path degeneracy from dimensional structure.
+
+Bennett \cite{bennett1982} established that logical reversibility bounds energy only if computation is quasi-static and low-noise. Still et al. \cite{still2012} showed predictive information confers thermodynamic advantage, but creating/storing it has minimal work cost. Kolchinsky \& Wolpert \cite{kolchinsky2018} demonstrated that minimal work depends on changes in non-equilibrium distributions—aligning with our Projection Bound via $\ln N_\varepsilon$ and KL terms.
+
+\subsection{Quantum Demons}
+
+Recent quantum demons \cite{PhysRevResearch2024,PhysRevA2016} show coherence-entropy trade-offs with mathematical isomorphism $S(\rho) \leftrightarrow H_\varepsilon$. Physical mechanisms differ—quantum superposition (mK, $\mu$s) vs. classical path degeneracy (300K, ms)—yet both yield isomorphic bounds. The dimensional geometry may unify quantum and classical regimes, differing in mechanism (coherent superposition vs thermal degeneracy) but not fundamental structure.
+
+\subsection{Spatial Scales and Information Capacity}
+
+Voronel \cite{voronel2018} and Bormashenko \cite{bormashenko2022} established that biological informational capacity is constrained by spatial scales. Biological systems exploit \emph{both} spatial and temporal fine-graining. Total capacity:
+\begin{equation}
+E_{\text{collapse}} \geq k_BT_{\text{eff}} (D_{\text{spatial}} + D_{\text{temporal}}) \ln(L/\xi)
+\end{equation}
+
+\subsection{Camera-Engine Duality: A New Demon Mechanism}
+
+These prior frameworks quantify costs but don't fully capture how biological substrates defer projection. This motivates the camera-engine duality below, which reframes the demon mechanism physically.
+
+The classical demon is straightforward: a computer with memory that it periodically erases, paying $\kB T\ln 2$ per bit. The demon \emph{is} the memory.
+
+\textbf{The biological demon is more subtle.} It's not a memory device—it's a high-dimensional dynamical system that simultaneously functions as both \textbf{camera} (sensing environmental complexity) and \textbf{engine} (steering environmental dynamics). This dual role parallels both MacKenzie's observation that economic models both describe and shape markets \cite{mackenzie2006} and Boyd's OODA loop framework \cite{boyd1987}, where adaptive systems continuously observe, orient, decide, and act upon their environment. Here the duality is simultaneous rather than sequential, with thermodynamic cost concentrated at the decision/collapse point.
+
+\begin{tcolorbox}[colback=yellow!10,colframe=orange!60!black,title={Camera--Engine Duality}]
+\textbf{What the demon IS:} A formally infinite-dimensional substrate with accessible slice $D_{\text{eff}}$ at measurement threshold. Maintains dimensional isomorphism between internal and environmental structure.
+
+\textbf{What the demon DOES:}
+
+\textbf{1. Camera (sensing):} Couples weakly (sub-Landauer, $E_{\text{link}} \ll \kB T\ln 2$) to exponentially many environmental modes. High $D_{\text{eff}}$ enables integration: $E_{\text{total}} = \sum_i E_{\text{link},i} \gtrsim \kB T\ln 2$. Internal dynamics become correlated with environment—a structural map, not written bits.
+
+\textbf{2. Engine (steering):} Uses internal map to bias environmental dynamics via coordinated weak back-coupling across $D_{\text{eff}}$ channels.
+
+\textbf{3. Collapse (payment):} When output crystallizes (protein folds, neuron spikes), $D_{\text{eff}}$ collapses to discrete state, paying $\gtrsim \kB\Teff\ln(N_{\text{pre}}/N_{\text{post}})$.
+
+\textbf{Why weak coupling avoids immediate costs:} Sub-Landauer coupling creates mutual information through physical correlation (stored in joint state), not epistemic records. Following Sagawa-Ueda \cite{sagawa2010}, thermodynamic cost appears only when correlation is measured and stabilized as discrete memory—the dimensional collapse.
+\end{tcolorbox}
+
+\paragraph{Resolution of the Paradox}
+
+The demon doesn't "extract information" in the sense of writing bits. It \emph{becomes isomorphic} to environmental structure via dimensional resonance. Information exists in the \emph{correlation} between internal and external structure—physical (coupling energy) not epistemic (written records). Thermodynamic cost appears only when correlation must collapse to discrete action.
+
+High-D systems can maintain mutual information through structural isomorphism without irreversible bit registration. A protein folding in response to chaperone binding doesn't "read" the chaperone's state—the protein's $10^{48}$ microstates resonantly couple to chaperone conformations. The mutual information exists in physical correlation, not written memory. Only when committing to native fold does dimensional collapse occur.
+
+Path degeneracy is the signature that structural correlation exists without bit registration. The system effectively explores a vast ensemble of micro-trajectories via thermal fluctuations while deferring any persistent record of order. Because individual coupling energies are $\ll \kB T\ln 2$, you cannot track "which path when" without measurement energy exceeding signal energy (back-action). Digital systems require supra-Landauer inputs per bit and cannot exploit this integration regime.
+
+\subsection{The Accuracy-Efficiency Tradeoff}
+
+\textbf{What digital computers buy with their energy cost:}
+\begin{itemize}
+\item Bit-exact computation: deterministic and reproducible
+\item Known state: query any variable, get exact value
+\item Auditable history: complete, verifiable trace
+\item Precision arithmetic: arbitrary precision (hardware-limited)
+\item Logical guarantees: formal verification, proof of correctness
+\end{itemize}
+
+\textbf{What high-D physical substrates sacrifice for efficiency:}
+\begin{itemize}
+\item Path indeterminacy: cannot know which of $10^{48}$ paths taken
+\item Thermal noise: inherent randomness from $\sim \kB T$ fluctuations
+\item Approximate outputs: "protein folded" not "path \#37,594,284,719"
+\item Non-reproducibility: exact micro-trajectory differs each time
+\end{itemize}
+
+Digital architectures pay per recorded bit to guarantee precision and auditability. Continuous substrates defer recording and gain energy efficiency for order-insensitive tasks. Neither is "better"—they solve different problems. Biology rarely needs bit-exact computation; it needs robust pattern recognition and approximate optimization.
+
+\subsection{Computational Irreducibility}
+
+When timing is thermodynamically inaccessible, predictive compression is lower-bounded by emulation \cite{wolfram2002,louie2020,igamberdiev2014}. Temporal order is not thermodynamically accessible as a persistent record until irreversible registration. The temporal structure is \emph{created} by registration, not revealed. Any predictor must perform the same registration operations to create that structure—therefore must emulate the system up to collapse points.
+
+This isn't a computational limitation but fundamental physics. The "when" you're trying to predict doesn't exist until the projection creates it through dimensional collapse. In Igamberdiev's framework \cite{igamberdiev2014}, biological organization involves anticipatory systems where constraints precede values. Camera-engine duality enables this: the system maintains correlations (relational structure) without computing trajectories, allowing emergent functional meaning at collapse.
+
+\subsection{Limitations and Caveats}
+
+\textbf{Theoretical:}
+\begin{itemize}
+\item Bounds stated at fixed $\varepsilon$ for quasistatic protocols
+\item Typical-set reduction is conservative; KL terms tighten bounds for non-uniform distributions
+\item Sub-Landauer energy estimates are order-of-magnitude; detailed simulations remain desirable
+\item Future work could simulate finite-time corrections using thermodynamic geometry \cite{sivak2012}
+\end{itemize}
+
+\textbf{Task-dependent:}
+\begin{itemize}
+\item Degeneracy numbers represent upper bounds assuming statistical independence
+\item Correlations reduce effective $\Omega$ by factors $\kappa \ge 1$ (see Appendix A for sensitivity)
+\item Efficiency claims strongest for order-insensitive tasks where outputs depend on integrated statistics
+\item For timing-critical tasks (e.g., precise spike-timing codes), path degeneracy and advantages diminish
+\end{itemize}
+
+\textbf{Common objections:}
+
+\emph{Objection 1:} "Digital doesn't have to store full history—you can compress or discard intermediate states."
+
+\emph{Reply:} Compression reduces storage but not the record-selection cost at the moment of committing to one trajectory class. Deciding among $G$ order classes and stabilizing that decision as persistent, queryable record still incurs $\ge k_BT\ln G$ dissipation.
+
+\emph{Objection 2:} "Analog front-ends (e.g., in neuromorphic chips) can also integrate weak sub-Landauer signals before digitization."
+
+\emph{Reply:} Exactly our point. The energy cost appears at the analog-to-digital boundary or wherever memory is formed—the projection from continuous high-D dynamics to discrete records. Analog systems that defer this projection gain the efficiency we quantify.
+
+\emph{Objection 3:} "Is path degeneracy physical or merely epistemic?"
+
+\emph{Reply:} Both, but the physical aspect is primary. At any fixed $\varepsilon$, the count of thermodynamically distinguishable states is objective. Below $\varepsilon$, distinctions require measurement energy exceeding signal energy, making finer structure thermodynamically inaccessible (back-action), not merely unknown.
+
+\section{Conclusion}
+
+Maxwell's demon paradox extends to continuous substrates via timing inaccessibility and dimensional collapse. Below Landauer threshold, temporal ordering becomes thermodynamically inaccessible—you cannot irreversibly register "when" without spending $\geq k_BT\ln 2$ per binary timing decision. This creates path degeneracy: exponentially many micro-trajectories map to the same observable outcome.
+
+The biological demon uses high-dimensional substrates to efficiently compute high-dimensional dynamics via camera-engine duality: sensing environmental complexity via weak coupling, steering it via coordinated weak back-coupling, maintaining dimensional isomorphism without writing bits. Information exists in structural correlation, not epistemic records. Thermodynamic cost appears only at dimensional collapse.
+
+Digital computers use low-dimensional substrates (bit strings) to simulate high-dimensional dynamics, explicitly tracking each coordinate and paying $\kB T\ln 2$ per bit. State-space and enumerative simulation cost grow exponentially with $D$, whereas minimal dissipation paid by a high-D substrate scales like $\kB\Teff\ln G \sim D$. The system explores all paths in parallel via thermal fluctuations using sub-Landauer coupling energies. Because individual interactions are $\ll \kB T\ln 2$, you cannot track "which path when" without measurement energy exceeding signal energy.
+
+Neither substrate is "better"—they solve different problems. Digital computation pays the energy cost for deterministic, bit-exact results with complete epistemic access, essential for tasks requiring precision, reproducibility, and verifiability. High-D physical substrates sacrifice this precision to achieve energy efficiency—you cannot know which path was taken, only that the robust macro-outcome emerged. Biology rarely needs bit-exact computation; it needs robust pattern recognition and approximate optimization.
+
+To know what water does, use water. To know what a protein does, use a protein. To know what neurons do, use neurons. Digital simulation incurs exponential state-space costs for many such tasks, though reversible computing may asymptotically approach thermodynamic bounds with severe speed and noise-tolerance tradeoffs \cite{bennett1982,frank2019}.
+
+The framework presented here—timing inaccessibility, path degeneracy, and dimensional projection—provides a quantitative foundation for understanding biological efficiency without invoking violations of fundamental physical law.
+
+\section*{Acknowledgments}
+The author thanks reviewers for constructive feedback.
+
+\section*{Declarations}
+\textbf{Funding}: None. \textbf{Competing interests}: None. \textbf{Generative AI use}: Claude 4.5 Sonnet (Anthropic) for drafting and conceptual development; GPT-5 (OpenAI) and Grok (xAI) for feedback and review. Author reviewed all content and takes full responsibility.
+
+\begin{thebibliography}{99}
+
+\bibitem{landauer1961}
+Landauer, R. (1961). Irreversibility and heat generation. \textit{IBM J. Res. Dev.}, 5(3), 183--191.
+
+\bibitem{sagawa2010}
+Sagawa, T., Ueda, M. (2010). Generalized Jarzynski equality. \textit{Phys. Rev. Lett.}, 104, 090602.
+
+\bibitem{parrondo2015}
+Parrondo, J.M.R., Horowitz, J.M., Sagawa, T. (2015). Thermodynamics of information. \textit{Nature Phys.}, 11, 131--139.
+
+\bibitem{todd2025biosystems}
+Todd, I. (2025). The limits of falsifiability: Dimensionality, measurement thresholds, and the sub-Landauer domain in biological systems. \textit{BioSystems}, 258, 105608.
+
+\bibitem{mcdonnell2011}
+McDonnell, M.D., Ward, L.M. (2011). The benefits of noise in neural systems. \textit{Nat. Rev. Neurosci.}, 12(7), 415--426.
+
+\bibitem{stocks2000}
+Stocks, N. (2000). Suprathreshold stochastic resonance. \textit{Phys. Rev. Lett.}, 84(11), 2310--2313.
+
+\bibitem{seifert2012}
+Seifert, U. (2012). Stochastic thermodynamics. \textit{Rep. Prog. Phys.}, 75, 126001.
+
+\bibitem{kolmogorov1959}
+Kolmogorov, A.N., Tikhomirov, V.M. (1959). $\varepsilon$-entropy. \textit{Russ. Math. Surv.}, 14(2), 3--86.
+
+\bibitem{slepian1961}
+Slepian, D., Pollak, H.O. (1961). Prolate spheroidal wave functions, I. \textit{Bell Syst. Tech. J.}, 40(1), 43--63.
+
+\bibitem{stringer2019}
+Stringer, C., et al. (2019). Spontaneous behaviors drive multidimensional activity. \textit{Science}, 364(6437), eaav7893.
+
+\bibitem{bian2025ddga}
+Bian, S., Zhou, R., Lin, W., Li, C. (2025). Quantifying energy landscape of high-dimensional oscillatory systems by diffusion decomposition. \textit{Cell Rep. Phys. Sci.}, 6, 102405. doi: 10.1016/j.xcrp.2025.102405
+
+\bibitem{parrondo1996}
+Parrondo, J.M.R., Español, P. (1996). Criticism of Feynman's analysis of the ratchet. \textit{Am. J. Phys.}, 64, 1125--1130.
+
+\bibitem{vaikuntanathan2009}
+Vaikuntanathan, S., Jarzynski, C. (2009). Dissipation and lag in irreversible processes. \textit{Europhys. Lett.}, 87, 60005.
+
+\bibitem{allahverdyan2009}
+Allahverdyan, A.E., et al. (2009). Maxwell's demon in the quantum world. \textit{Rev. Mod. Phys.}, 81, 1665--1702.
+
+\bibitem{PhysRevResearch2024}
+Annby-Andersson, B., et al. (2024). Maxwell's demon across the quantum-to-classical transition. \textit{Phys. Rev. Research}, 6, 043216.
+
+\bibitem{PhysRevA2016}
+Lebedev, A.V., Lesovik, G.B., Blatter, G. (2016). Entanglement and coherence in quantum state merging. \textit{Phys. Rev. A}, 94, 052133.
+
+\bibitem{laughlin1998}
+Laughlin, S.B., et al. (1998). Metabolic cost of neural information. \textit{Nat. Neurosci.}, 1, 36--41.
+
+\bibitem{wolfram2002}
+Wolfram, S. (2002). \textit{A New Kind of Science}. Wolfram Media.
+
+\bibitem{igamberdiev2014}
+Igamberdiev, A.U. (2014). Time rescaling and pattern formation in biological evolution. \textit{BioSystems}, 123, 19--26. doi: 10.1016/j.biosystems.2014.03.002
+
+\bibitem{levin2021}
+Levin, M. (2021). Bioelectric signaling. \textit{Cell}, 184(8), 1971--1989.
+
+\bibitem{louie2020}
+Louie, A.H. (2020). Relational biology and Church's thesis. \textit{BioSystems}, 197, 104179.
+
+\bibitem{mackenzie2006}
+MacKenzie, D. (2006). \textit{An Engine, Not a Camera: How Financial Models Shape Markets}. MIT Press.
+
+\bibitem{miller2018}
+Miller, E.K., Lundqvist, M., Bastos, A.M. (2018). Working memory 2.0. \textit{Neuron}, 100(2), 463--475.
+
+\bibitem{voronel2018}
+Voronel, A. (2018). Spatial scales of living cells. \textit{Eur. Biophys. J.}, 47, 515--521.
+
+\bibitem{bormashenko2022}
+Bormashenko, E. (2022). Fibonacci sequences and pattern formation. \textit{Biophysica}, 2(3), 292--307.
+
+\bibitem{boyd1987}
+Boyd, J.R. (1987). \textit{A Discourse on Winning and Losing}. Air University Press. (Reprinted in \textit{The Essence of Winning and Losing}, ed. C. Richards \& C. Spinetta, 2012.)
+
+\bibitem{bennett1982}
+Bennett, C.H. (1982). The thermodynamics of computation. \textit{Int. J. Theor. Phys.}, 21(12), 905--940.
+
+\bibitem{still2012}
+Still, S., et al. (2012). Thermodynamics of prediction. \textit{Phys. Rev. Lett.}, 109(12), 120604.
+
+\bibitem{kolchinsky2018}
+Kolchinsky, A., Wolpert, D.H. (2018). Semantic information. \textit{Interface Focus}, 8(6), 20180041.
+
+\bibitem{sivak2012}
+Sivak, D.A., Crooks, G.E. (2012). Thermodynamic metrics. \textit{Phys. Rev. Lett.}, 108, 190602.
+
+\bibitem{coverthomas}
+Cover, T.M., Thomas, J.A. (2006). \textit{Elements of Information Theory}. Wiley.
+
+\bibitem{edelman2001}
+Edelman, G.M., Gally, J.A. (2001). Degeneracy and complexity. \textit{PNAS}, 98(24), 13763--13768.
+
+\bibitem{horowitz2014}
+Horowitz, M. (2014). Computing's energy problem. \textit{IEEE ISSCC}, 10--14.
+
+\bibitem{frank2019}
+Frank, M.P. (2019). The physical limits of computing. \textit{Computing in Science \& Engineering}, 21(3), 16--26.
+
+\bibitem{ott2008}
+Ott, E., Antonsen, T.M. (2008). Low dimensional behavior. \textit{Chaos}, 18, 037113.
+
+\bibitem{ott2009}
+Ott, E., Antonsen, T.M. (2009). Long time evolution. \textit{Chaos}, 19, 023117.
+
+\bibitem{anastassiou2011}
+Anastassiou, C.A., et al. (2011). Ephaptic coupling. \textit{Nat. Neurosci.}, 14(2), 217--223.
+
+\bibitem{verdu2002}
+Verd{\'u}, S. (2002). Spectral efficiency. \textit{IEEE Trans. Inf. Theory}, 48(6), 1319--1343.
+
+\end{thebibliography}
+
+\appendix
+
+\section{Parameter Sensitivity Analysis for Path Degeneracy}
+
+This appendix provides worked examples showing how parameter choices lead to the headline degeneracy ranges cited in the main text.
+
+\subsection{Protein Folding Example}
+
+\textbf{Parameters:}
+\begin{itemize}
+\item Micro-level states: $N_{\text{micro}} \sim 10^{48}$--$10^{100}$ (rotamer libraries to continuous torsions)
+\item Meso-level states: $N_{\text{meso}} \sim 10^{6}$ (folding intermediates)
+\item Temporal coherence: $\tau_c \sim 10^{-6}$--$1$ s (folding time)
+\item Fine resolution: $\Delta t_{\text{fine}} \sim 10^{-12}$ s (bond vibration)
+\item Coarse resolution: $\Delta t_{\text{coarse}} \sim 10^{-9}$ s (conformational transition)
+\item Effective dimensionality: $D_{\text{eff}} \sim 20$--$50$ (backbone degrees of freedom)
+\item Correlation factor: $\kappa \sim 5$--$10$ (folding funnel constraint)
+\end{itemize}
+
+\textbf{Calculation:}
+\begin{align}
+\log_{10}\Omega &= \frac{D_{\text{eff}}}{\kappa} \log_{10}\left(\frac{\tau_c}{\Delta t_{\text{fine}}}\right) + \log_{10}\left(\frac{N_{\text{micro}}}{N_{\text{meso}}}\right) \\
+&\approx \frac{20\text{--}50}{5\text{--}10} \times \log_{10}(10^{6}\text{--}10^{12}) + \log_{10}(10^{42}\text{--}10^{94}) \\
+&\approx 42\text{--}94
+\end{align}
+
+\subsection{Neural Population Example}
+
+\textbf{Parameters:}
+\begin{itemize}
+\item Population size: $N \sim 1000$ neurons
+\item Coherence time: $\tau_c \sim 100$ ms
+\item Fine resolution: $\Delta t_{\text{fine}} \sim 0.1$ ms (spike timing precision)
+\item Coarse resolution: $\Delta t_{\text{coarse}} \sim 20$ ms (behavioral bins)
+\item Effective dimensionality: $D_{\text{eff}} \sim 50$--$200$ (from large-scale recordings)
+\item Correlation factor: $\kappa \sim 2$--$5$ (estimated as $D_{\text{eff}}^{\text{shuffle}}/D_{\text{eff}}^{\text{data}}$ under phase-shuffle surrogates)
+\end{itemize}
+
+\textbf{Calculation:}
+\begin{align}
+\log_{10}\Omega &= \frac{\Delta D_{\text{eff}}}{\kappa} \log_{10}\left(\frac{\tau_c/\Delta t_{\text{fine}}}{\tau_c/\Delta t_{\text{coarse}}}\right) \\
+&= \frac{50\text{--}200}{2\text{--}5} \times \log_{10}(200) \\
+&\approx 23\text{--}92
+\end{align}
+
+\textbf{Note:} To avoid double counting, we do not add a separate "voltage microstate" multiplier; the scaling in \cref{eq:omega} already counts resolution-distinguishable micro-trajectories at the chosen $(\varepsilon,\Delta t)$.
+
+\subsection{Sensitivity Table}
+
+\begin{table}[h]
+\centering
+\caption{$\log_{10}\Omega$ across parameter ranges for neural example}
+\label{tab:omega-sensitivity}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+$(\Delta D_{\text{eff}},\kappa)$ & $\tau_c/\Delta t=50$ & $\tau_c/\Delta t=200$ & $\tau_c/\Delta t=500$ \\
+\midrule
+(30, 2) & 25 & 34 & 40 \\
+(50, 2) & 42 & 58 & 68 \\
+(80, 2) & 68 & 92 & 108 \\
+(50, 3) & 28 & 38 & 45 \\
+(50, 5) & 17 & 23 & 27 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key observations:}
+\begin{itemize}
+\item Degeneracy remains exponentially large ($\Omega \sim 10^{17}$--$10^{108}$) across plausible ranges
+\item Correlations (higher $\kappa$) reduce $\log_{10}\Omega$ proportionally
+\item Time-bandwidth ratio has logarithmic effect, so moderate changes in $\tau_c/\Delta t$ produce manageable shifts
+\item Upper bounds assume independence; real biological systems have additional constraints
+\end{itemize}
+
+\section{Appendix B: Biological Implementations Across Scales}
+
+The timing inaccessibility framework applies from molecular to organismal scales wherever continuous dynamics operate below the Landauer threshold.
+
+\subsection{Molecular Scale: Protein Folding}
+
+Protein folding exemplifies path degeneracy at the molecular level. A typical protein explores $\sim 10^{48}$--$10^{100}$ conformational microstates en route to its native fold, yet folding time is only $\sim 10^{-6}$--$1$ s.
+
+\textbf{Energetics:} Thermal energy $\kB T \approx 4.1 \times 10^{-21}$ J at 300\,K; individual hydrogen bonds $\sim 2$--$10 \kB T$; hydrophobic contacts $\sim 1$--$5 \kB T$. While individual bond energies are supra-Landauer, the energetic cost of irreversibly registering the timing and order of the full conformational trajectory is sub-Landauer per timing decision.
+
+\textbf{Path degeneracy:} For a 100-residue protein with $\sim 3$ conformations per residue, microstate space $\sim 3^{100} \approx 10^{48}$ to $10^{100}$, but coarse-grained intermediate states $\sim 10^{3}$--$10^{6}$. Path degeneracy $G \sim 10^{42}$--$10^{94}$ (upper bounds; folding funnels reduce effective degeneracy via correlation factor $\kappa \sim 5$--$10$).
+
+\textbf{Collapse:} Thermodynamic cost appears at native state stabilization. Estimated $\Delta G_{\text{fold}} \sim 5$--$15$ kcal/mol $\approx (3.5\times10^{-20}\text{--}1.0\times10^{-19})$ J, consistent with collapsing $D_{\text{eff}} \sim 20$--$50$ effective dimensions.
+
+\subsection{Neural Population as Camera-Engine}
+
+Consider a neural population making a perceptual decision. The substrate is formally infinite-dimensional (continuous electromagnetic fields, cross-frequency phase coupling, continuous membrane voltage), but at typical recording resolutions (~1ms, ~100$\mu$V sensitivity), only $D_{\text{eff}} \sim 100$ is thermodynamically accessible.
+
+\textbf{Camera phase (0--100 ms):} Environmental photon arrivals at $\sim 10^{6}$ rods/cones. Each photon at 500--600\,nm has $E\sim(3.3\text{--}4.0)\times10^{-19}\,$J ($\sim 80\text{--}96\,\kB T$), but timing is sub-Landauer. Accessible modes $D_{\text{eff}} \sim 100$ integrate timing patterns. Internal voltage landscape becomes isomorphic to environmental light pattern through weak coupling. No bits written—structural correlation emerges.
+
+\textbf{Engine phase (concurrent):} Attention modulates sensory gain via weak top-down connections. Each feedback synapse $\sim 10^{-22}$ J $\ll \kB T\ln 2$, but $D_{\text{eff}} \sim 100$ feedback channels coordinately bias processing. Environment steered toward task-relevant features using internal map built during camera phase.
+
+\textbf{Collapse (at decision, $\sim$150 ms):} Motor output: "left" vs "right" (binary). Dimensional collapse: accessible slice $D_{\text{eff}} \sim 100 \to D' = 1$. Dissipation: $\sim 100 \kB T\ln 2 \approx 3 \times 10^{-19}$ J. Digital would pay this during every timestep; biological pays once at decision.
+
+\subsection{Cross-Scale Pattern}
+
+\begin{table}[h]
+\centering
+\caption{Path degeneracy across biological scales}
+\label{tab:cross-scale}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+System & Event energy & $D_{\text{eff}}$ & Estimated $\log_{10}\Omega$ \\
+\midrule
+Protein folding & $1$--$10 \kB T$ & 20--50 & 42--94 \\
+Ca$^{2+}$ waves & $5$--$20 \kB T$ & 30--100 & 25--40 \\
+Gene regulation & $5$--$15 \kB T$ & 10--30 & 15--20 \\
+Neural (ephaptic) & $\sim 10^{-3} \kB T\ln 2$ & 50--200 & 50--100 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Common mechanism:} Thermal noise explores vast micro-trajectory spaces; weak fields bias ensembles; thermodynamic cost concentrates at collapse to discrete outputs.
+
+\section{Appendix C: Estimating $D_{\mathrm{eff}}$ and $\kappa$ from Data}
+
+\paragraph{Data and preprocessing.}
+Acquire $X\in\mathbb{R}^{T\times M}$ (time $\times$ channels). Band-limit to the frequency band of interest with zero-phase FIR; extract analytic signal $z_m(t)$ via Hilbert transform for phase-based measures.
+
+\paragraph{Feature matrix.}
+Either (i) use covariance $C=\frac{1}{T-1}(X-\bar X)^\top(X-\bar X)$, or (ii) build a phase-coherence matrix $W$ with entries $W_{ij}=\left|\frac{1}{T}\sum_t e^{i(\phi_i(t)-\phi_j(t))}\right|$ (inter-site phase coherence, ISPC \cite{stringer2019}). Normalize $W$ to unit trace to avoid scale artifacts.
+
+\paragraph{Eigen-spectrum and participation ratio.}
+Let $\{\lambda_k\}$ be eigenvalues of $C$ (or $W$), sorted descending. Define
+\[
+D_{\mathrm{eff}} = \frac{\left(\sum_k \lambda_k\right)^2}{\sum_k \lambda_k^2}.
+\]
+Report $D_{\mathrm{eff}}(t)$ in a sliding window (e.g., 200\,ms with 10\,ms hop) to track task-locked changes.
+
+\paragraph{Correlation factor $\kappa$.}
+Construct $S$ surrogate datasets by phase-shuffling each channel: $z_m(t)\mapsto e^{i\theta_m} z_m(t)$ with random $\theta_m$, preserving power spectra but destroying cross-channel timing. Compute $D_{\mathrm{eff}}^{(\text{sur})}$ on each surrogate; define
+\[
+\kappa \equiv \frac{D_{\mathrm{eff}}^{\text{data}}}{\mathrm{median}_s\, D_{\mathrm{eff}}^{(\text{sur})}} \quad (\kappa\ge 1).
+\]
+Use $\kappa$ in $\Omega$-scaling as in \cref{eq:omega}.
+
+\paragraph{Robustness notes.}
+(1) Z-score channels before $C$ to prevent amplitude-dominated modes. (2) Repeat analyses across bands (theta/alpha/beta), aligning with task epochs. (3) Control for sample size by fixing window length and applying Ledoit--Wolf shrinkage on $C$ if $M$ is large relative to $T$.
+
+\end{document}

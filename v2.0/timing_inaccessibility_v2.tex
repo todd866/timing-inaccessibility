@@ -384,7 +384,7 @@ E_{\mathrm{collapse}} \geq \kB\Teff (D_{\mathrm{eff}} - D') \ln(L/\varepsilon)
 \end{theorem}
 
 \begin{proof}[Proof outline]
-\textbf{Step 1:} Define coarse-grained entropy as $S_\varepsilon = \kB(\ln N_\varepsilon - \mathrm{KL}(p\|U))$ where $U$ is uniform over the $N_\varepsilon$ cells. \emph{Note:} Identifying $S_\varepsilon$ with a thermodynamic entropy that enters a Clausius inequality requires equilibrium or near-equilibrium (linear response) conditions. For far-from-equilibrium systems, $S_\varepsilon$ serves as an information-theoretic proxy; the bound remains valid as stated when $\Teff$ is the operationally measured noise--response ratio at the collapse mode (see validity conditions below).
+\textbf{Step 1:} Define coarse-grained entropy as $S_\varepsilon = \kB(\ln N_\varepsilon - \mathrm{KL}(p\|U))$ where $U$ is uniform over the $N_\varepsilon$ cells. \emph{Note:} Identifying $S_\varepsilon$ with a thermodynamic entropy that enters a Clausius inequality requires equilibrium or near-equilibrium (linear response) conditions. For far-from-equilibrium systems, $S_\varepsilon$ serves as an information-theoretic proxy; in that regime the bound should be understood as an \emph{operational ansatz} calibrated by the measured noise--response ratio $\Teff(\omega_0)$, not as a strict thermodynamic inequality (see validity conditions below).
 
 \textbf{Step 2:} The projection reduces support and alters $p$:
 \begin{align}
@@ -496,7 +496,7 @@ When the system collapses from exploring the full $D_{\text{eff}}$-dimensional m
 E_{\text{collapse}} \geq \kB \Teff (D_{\text{eff}} - D') \ln(2\pi/\Delta\theta)
 \end{equation}
 
-This is the continuous analog of Landauer's bound—fully geometric, no discrete bits. Recent computational approaches encounter numerical failures ("covariance explosion") precisely where temporal resolution demands exceed thermodynamic accessibility \cite{bian2025ddga}—computational evidence for the bounds derived here.
+This is the continuous analog of Landauer's bound---fully geometric, no discrete bits. Bian et al.\ \cite{bian2025ddga} observe numerical ``covariance explosion'' in high-dimensional oscillatory systems at fine temporal resolution, which is consistent with---though not direct evidence for---the thermodynamic bounds derived here.
 
 \section{Relation to Prior Work and Implications}
 
@@ -512,7 +512,7 @@ Recent quantum demons \cite{PhysRevResearch2024,PhysRevA2016} show coherence-ent
 
 \subsection{Spatial Scales and Information Capacity}
 
-Bormashenko and Voronel \cite{voronel2018} and Bormashenko \cite{bormashenko2022} established that biological informational capacity is constrained by spatial scales. Biological systems exploit \emph{both} spatial and temporal fine-graining. Total capacity:
+Bormashenko and Voronel \cite{voronel2018} and Bormashenko \cite{bormashenko2022} established that biological informational capacity is constrained by spatial scales. When the system's attractor has both spatial degrees of freedom ($D_{\text{spatial}}$, at resolution $\xi$) and temporal degrees of freedom ($D_{\text{temporal}}$, at resolution $\Delta t$), the total covering number factorises: $N_\varepsilon \sim (L/\xi)^{D_{\text{spatial}}} \cdot (\tau/\Delta t)^{D_{\text{temporal}}}$. Applying the Projection Bound (Theorem~\ref{thm:projection-bound}) to the combined manifold:
 \begin{equation}
 E_{\text{collapse}} \geq k_BT_{\text{eff}} (D_{\text{spatial}} + D_{\text{temporal}}) \ln(L/\xi)
 \end{equation}
@@ -678,7 +678,7 @@ The underlying physics exists independently of frameworks, but \emph{causal clai
 
 \subsection{Temporal Order as Emergent}
 
-A philosophical consequence of framework-dependent timing: below the registration threshold, temporal order is not a physically well-defined, testable property of the system. The coarse-grained order that appears at projection is \emph{created} by the measurement framework, not revealed. Below the Landauer threshold, the ordering is operationally undecidable---there is no way to access the ``true'' micro-ordering without spending energy that exceeds the signal. Causal relationships inherit this framework dependence: what counts as ``A caused B'' depends on the temporal resolution chosen before measurement.
+A philosophical consequence of framework-dependent timing: below the registration threshold, temporal order is not operationally recoverable without back-action that exceeds the signal energy. The coarse-grained order that appears at projection is framework-relative---different measurement budgets yield different orderings of the same physical events, and there is no budget-independent way to adjudicate between them. Causal relationships inherit this framework dependence: what counts as ``A caused B'' depends on the temporal resolution chosen before measurement.
 
 \section{Implications for Artificial Intelligence}
 
@@ -724,7 +724,7 @@ As in \S2.4, the following applies to conventional digital architectures with ir
 
 \subsection{What Conventional Digital AI Cannot Do}
 
-If the sub-Landauer integration regime is essential for certain computations, then conventional digital AI cannot perform those computations regardless of scale. This is a claim about \emph{how} computation occurs, not about behavioral equivalence---a digital system might approximate the input-output behavior of a continuous system while using fundamentally different mechanisms. Candidates for mechanism-dependent capabilities include:
+If the sub-Landauer integration regime is essential for certain biological computations, then conventional digital AI cannot exploit the same thermodynamic shortcut without analog or hybrid front-ends. This is a claim about \emph{mechanism and efficiency}, not about input-output equivalence---a digital system may approximate the same behavior via different (and potentially costlier) means. Candidates for mechanism-dependent differences include:
 
 \begin{itemize}
 \item \textbf{Sub-Landauer integration}: Conventional digital architectures cannot integrate signals below the discretization threshold. Each input must be amplified and stabilized as bits before processing. Biological systems integrate across many weak channels before any discretization occurs.
@@ -785,9 +785,6 @@ Landauer, R. (1961). Irreversibility and heat generation. \textit{IBM J. Res. De
 \bibitem{sagawa2010}
 Sagawa, T., Ueda, M. (2010). Generalized Jarzynski equality. \textit{Phys. Rev. Lett.}, 104, 090602.
 
-\bibitem{parrondo2015}
-Parrondo, J.M.R., Horowitz, J.M., Sagawa, T. (2015). Thermodynamics of information. \textit{Nature Phys.}, 11, 131--139.
-
 \bibitem{todd2025biosystems}
 Todd, I. (2025). The limits of falsifiability: Dimensionality, measurement thresholds, and the sub-Landauer domain in biological systems. \textit{BioSystems}, 258, 105608.
 
@@ -827,23 +824,11 @@ Annby-Andersson, B., et al. (2024). Maxwell's demon across the quantum-to-classi
 \bibitem{PhysRevA2016}
 Lebedev, A.V., Lesovik, G.B., Blatter, G. (2016). Entanglement and coherence in quantum state merging. \textit{Phys. Rev. A}, 94, 052133.
 
-\bibitem{laughlin1998}
-Laughlin, S.B., et al. (1998). Metabolic cost of neural information. \textit{Nat. Neurosci.}, 1, 36--41.
-
 \bibitem{wolfram2002}
 Wolfram, S. (2002). \textit{A New Kind of Science}. Wolfram Media.
 
 \bibitem{igamberdiev2014}
 Igamberdiev, A.U. (2014). Time rescaling and pattern formation in biological evolution. \textit{BioSystems}, 123, 19--26. doi: 10.1016/j.biosystems.2014.03.002
-
-\bibitem{levin2021}
-Levin, M. (2021). Bioelectric signaling. \textit{Cell}, 184(8), 1971--1989.
-
-\bibitem{louie2020}
-Louie, A.H. (2020). Relational biology and Church's thesis. \textit{BioSystems}, 197, 104179.
-
-\bibitem{miller2018}
-Miller, E.K., Lundqvist, M., Bastos, A.M. (2018). Working memory 2.0. \textit{Neuron}, 100(2), 463--475.
 
 \bibitem{voronel2018}
 Bormashenko, E., Voronel, A. (2018). Spatial scales of living cells and their energetic and informational capacity. \textit{Eur. Biophys. J.}, 47, 515--521. doi: 10.1007/s00249-017-1267-x
@@ -871,9 +856,6 @@ Sivak, D.A., Crooks, G.E. (2012). Thermodynamic metrics. \textit{Phys. Rev. Lett
 
 \bibitem{coverthomas}
 Cover, T.M., Thomas, J.A. (2006). \textit{Elements of Information Theory}. Wiley.
-
-\bibitem{edelman2001}
-Edelman, G.M., Gally, J.A. (2001). Degeneracy and complexity. \textit{PNAS}, 98(24), 13763--13768.
 
 \bibitem{horowitz2014}
 Horowitz, M. (2014). Computing's energy problem. \textit{IEEE ISSCC}, 10--14.

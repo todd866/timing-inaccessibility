@@ -40,9 +40,9 @@ Sydney, NSW, Australia\\
 \maketitle
 
 \begin{abstract}
-Maxwell's demon was resolved by Landauer and Bennett: the demon must erase information to reuse its memory, paying $\ge \kB T\ln 2$ per bit. But this resolution assumed discrete memory states. We extend the resolution to continuous biological substrates, showing that the thermodynamic advantage of living systems arises from \emph{timing inaccessibility}: irreversibly registering fine temporal order at resolution $\Delta t$ requires dissipating $\ge \kB T\ln 2$ per stabilized order bit; when the relevant couplings are sub-Landauer, extracting such records without dominating the dynamics requires measurement resources that overwhelm the coupling energies (back-action). Consequently, exponentially many micro-trajectories map to the same observable outcome (\emph{path degeneracy}). Continuous high-dimensional substrates exploit this by integrating sub-Landauer couplings during evolution and paying only at \emph{projection} (dimensional collapse to a low-dimensional output).
+Maxwell's demon was resolved by Landauer and Bennett: the demon must erase information to reuse its memory, paying $\ge \kB T\ln 2$ per bit. That resolution, however, is usually phrased for discrete memory states. Here we extend the discussion to continuous biological substrates. Our central claim is that the energetic advantage of living systems arises from \emph{timing inaccessibility}: irreversibly registering fine temporal order at resolution $\Delta t$ requires dissipating $\ge \kB T\ln 2$ per stabilized order bit, and when the relevant couplings are sub-Landauer, obtaining such records without dominating the dynamics demands measurement resources that overwhelm the coupling energies (back-action). Exponentially many micro-trajectories then map to the same observable outcome (\emph{path degeneracy}), allowing continuous high-dimensional substrates to integrate weak couplings during evolution and pay primarily at \emph{projection} (dimensional collapse to a low-dimensional output).
 
-We derive a \textbf{Projection Bound} for quasistatic projection at effective temperature $\Teff$:
+We derive a coarse-grained \textbf{Projection Bound} for quasistatic collapse at effective temperature $\Teff$:
 \begin{equation}
 E_{\mathrm{collapse}} \ge \kB\Teff
 \left(
@@ -51,9 +51,9 @@ E_{\mathrm{collapse}} \ge \kB\Teff
 + \KL{p^{\mathrm{post}}}{U_{\mathrm{post}}}
 \right)
 \end{equation}
-which reduces under typical-set conditions to $E_{\mathrm{collapse}}\ge \kB\Teff\ln(N_{\varepsilon,\mathrm{pre}}/N_{\varepsilon,\mathrm{post}})$. Combined with a \textbf{Temporal Registration Bound} (order over $M$ bins needs $\log_2 M!$ bits), we quantify the gap: digital tracking requires \emph{thermodynamic registration} of $\log_2 G \sim D\log k$ bits (linear in $D$ but with $\sim 10^4$--$10^6\times$ practical overhead), whereas continuous substrates defer cost to projection, paying $\sim D\ln(L/\varepsilon)$ only at collapse.
+which reduces under typical-set conditions to $E_{\mathrm{collapse}}\ge \kB\Teff\ln(N_{\varepsilon,\mathrm{pre}}/N_{\varepsilon,\mathrm{post}})$. Combined with a \textbf{Temporal Registration Bound} (ordering $M$ bins requires $\log_2 M!$ bits), this yields a simple architectural contrast: digital tracking pays at each stabilized record, whereas continuous substrates defer most of the thermodynamic payment to projection.
 
-\textbf{Version 2.0} extends the analysis with three new arguments: (1) \emph{Framework dependence of timing}---the measurement framework itself determines what counts as ``simultaneous'' versus ``sequential,'' making temporal structure framework-relative in the same sense that falsifiability is framework-relative \cite{todd2025biosystems}. (2) \emph{The ``when'' is created, not revealed}---temporal order does not pre-exist measurement but emerges at projection, with conceptual implications for causality and agency (explored speculatively). (3) \emph{AI substrate constraints}---digital substrates cannot access the sub-Landauer integration regime without shifting the projection boundary into analog/hybrid components, suggesting mechanism-level limits on what purely digital AI can achieve (though behavioral approximation may remain possible).
+\textbf{Version 2.0} clarifies the two-stage model (reversible correlation followed by irreversible projection), discusses temporal resolution as part of the measurement framework \cite{todd2025biosystems}, and examines how the placement of the projection boundary constrains artificial systems.
 
 For biologically plausible parameters, we estimate degeneracies of $10^{42}$--$10^{94}$ (protein folding) and $10^{50}$--$10^{100}$ (neural dynamics) as upper bounds under independence assumptions. The framework reconciles stochastic resonance (amplitude detection) with order inaccessibility, and clarifies why analog/neuromorphic systems gain efficiency by deferring projection.
 \end{abstract}
@@ -84,7 +84,7 @@ Living systems operate in a Maxwell--demon--like mode. They:
 \item process information to guide adaptive responses.
 \end{itemize}
 
-\noindent The energetic puzzle is stark: a human brain performs sophisticated computations at $\sim\!20$\,W, whereas comparable digital systems require orders of magnitude more power \cite{horowitz2014,frank2019}. If biological systems \emph{acquired and recorded} information as discrete bits, Landauer's principle would demand a dissipation of at least $\kB T\ln 2$ per bit. Yet measured neural energetics are far below what such pervasive bit--level bookkeeping would imply.
+\noindent The energetic puzzle is stark: a human brain performs sophisticated computations at $\sim\!20$\,W, whereas comparable digital systems require orders of magnitude more power \cite{horowitz2014}. If biological systems \emph{acquired and recorded} information as discrete bits, Landauer's principle would demand a dissipation of at least $\kB T\ln 2$ per bit. Yet measured neural energetics are far below what such pervasive bit--level bookkeeping would imply.
 
 We consider three possibilities:
 \begin{enumerate}
@@ -124,16 +124,6 @@ The Maxwell's demon problem has a precise intellectual history that this paper e
 
 \textbf{This paper (2025):} Extends the resolution to continuous substrates. The Landauer-Bennett resolution assumed discrete memory states (bits). Biological systems operate with continuous, high-dimensional dynamics where ``memory'' is structural correlation, not written bits. We show that continuous substrates defer the Landauer cost via path degeneracy: exponentially many micro-trajectories map to the same outcome, and the thermodynamic payment occurs only at \emph{projection} (dimensional collapse). The biological demon doesn't write and erase---it correlates and collapses.
 
-\medskip
-\noindent\textit{Scope note.} ``Maxwell's demon'' here is not merely metaphor---it is the literal extension of the Szilard-Landauer-Bennett framework to continuous, classical, room-temperature substrates. No violation of the second law is implied; we identify where the thermodynamic cost appears.
-
-\medskip
-\noindent\textbf{Three levels of claims.} This paper makes claims at three distinct levels, which readers should evaluate separately:
-\begin{enumerate}
-\item \textbf{Thermodynamic/engineering claim} (Sections 2--5): Irreversibly stabilizing temporal-order information requires $\ge \kB T\ln 2$ per bit. This is the most defensible claim and follows directly from Landauer's principle.
-\item \textbf{Operational-access claim} (Sections 2--5): Below some energy/precision regime, temporal order is not practically accessible without unacceptable disturbance or back-action. This is plausible but depends on modeling assumptions about measurement.
-\item \textbf{Interpretive claim} (Sections 7--8): The ``when'' does not exist until projection; temporal order is created, not revealed. This is philosophically interesting but should be understood as an \emph{interpretation} layered atop claims (1--2), not a direct consequence of thermodynamics. Skeptical readers can accept the bounds without endorsing this metaphysics.
-\end{enumerate}
 
 
 \medskip
@@ -151,11 +141,11 @@ E_{\mathrm{collapse}} \ge \kB\Teff \ln\!\big(N_\varepsilon(D_{\mathrm{eff}})/N_\
 \end{equation}
 under typical-set approximation (equiprobable cells).
 
-\textbf{Path Degeneracy Scaling:} With coherence time $\tau_c$ and temporal resolution $\Delta t$:
+\textbf{Path Degeneracy Scaling (heuristic estimate):} With coherence time $\tau_c$ and temporal resolution $\Delta t$, assuming independent modes with correlation correction $\kappa$:
 \begin{equation}
 \Omega(\Delta t) \sim \exp\!\left[\frac{D_{\mathrm{eff}}(\Delta t)}{\kappa}\,\ln\!\frac{\tau_c}{\Delta t}\right] \label{eq:omega}
 \end{equation}
-where $\kappa \ge 1$ accounts for correlations.
+where $\kappa \ge 1$ accounts for correlations. Unlike the TRB and PB above, this is a scaling estimate under independence assumptions, not a proven bound.
 }}\medskip
 
 \subsection{Efficiency Gap: Where the Energy Goes}
@@ -164,7 +154,7 @@ where $\kappa \ge 1$ accounts for correlations.
 \begin{itemize}
 \item To uniquely index among $G$ options: $\log_2 G$ bits required
 \item Protein folding: $\log_2(10^{48\text{--}100}) \approx 160$--$332$ bits
-\item Energy dissipated during tracking: $E_{\text{digital}} \gtrsim (160\text{--}332) \kB T\ln 2 \approx 4.6\times10^{-19}$--$9.5 \times 10^{-19}$ J (ideal Landauer floor; practical CMOS is $10^4$--$10^6\times$ higher, while fully reversible logic can approach the floor only with severe speed and noise-tolerance tradeoffs \cite{bennett1982,frank2019})
+\item Energy dissipated during tracking: $E_{\text{digital}} \gtrsim (160\text{--}332) \kB T\ln 2 \approx 4.6\times10^{-19}$--$9.5 \times 10^{-19}$ J (ideal Landauer floor; practical CMOS is typically far higher, while fully reversible logic can approach the floor only with severe speed and noise-tolerance tradeoffs \cite{bennett1982,horowitz2014})
 \item This applies even if history is later discarded—the cost was paid during recording
 \end{itemize}
 
@@ -175,7 +165,7 @@ where $\kappa \ge 1$ accounts for correlations.
 \item Pay only at projection: $E_{\text{cont}} \ge \kB\Teff\ln 2$ for binary collapse ("native" vs. "misfolded")
 \end{itemize}
 
-\textbf{Efficiency gain:} $\sim 160$--$330\times$ at theoretical Landauer limit. Contemporary CMOS operates at $\sim 10^4$--$10^6\times$ Landauer limit, raising practical gap to $\sim 10^5$--$10^{8}\times$ \cite{horowitz2014,frank2019}. While adiabatic reversible computing could theoretically narrow this gap \cite{bennett1982,frank2019}, practical implementations face severe speed and noise-tolerance tradeoffs. Digital architectures pay per recorded bit; continuous substrates defer recording and pay at projection. Analog/neuromorphic systems likewise gain efficiency by deferring discretization to the projection boundary.
+\textbf{Efficiency gain:} $\sim 160$--$330\times$ at the theoretical Landauer limit. In practice the gap is much larger because contemporary digital hardware operates well above that floor \cite{horowitz2014}. Reversible computing can, in principle, narrow the gap \cite{bennett1982}, but only with substantial speed and noise-tolerance tradeoffs. Digital architectures pay per recorded bit; continuous substrates defer recording and pay at projection. Analog and neuromorphic systems gain efficiency to the extent that they also defer discretization.
 
 \textbf{Note on scaling:} The \emph{registration cost} to identify/record one trajectory class is $\sim\log_2 G$, which scales linearly with $D$ when $G \sim k^D$. However, \emph{explicit state evolution}---simulating fine-grained dynamics or exploring the full trajectory space---can require exponential compute/time in $D$. Throughout this paper, we focus primarily on the thermodynamic cost of irreversible registration, which is the tighter bound for biological substrates.
 
@@ -217,7 +207,7 @@ $\xi$ & Correlation (coherence) length in capacity expressions \\
 
 \subsection{Roadmap}
 
-Section 2 formalizes timing inaccessibility. Section 3 derives the Projection Bound. Section 4 quantifies path degeneracy. Section 5 gives a continuous (Kuramoto) example. Section 6 relates to prior work and discusses implications including camera-engine duality. \textbf{Version 2.0 additions:} Section 7 establishes framework dependence of timing. Section 8 argues that temporal order is created at projection, not revealed. Section 9 derives implications for AI capability limits. Appendix A provides parameter sensitivity analysis for degeneracy estimates. Appendix B describes biological implementations across scales. Appendix C provides methods for estimating $D_{\mathrm{eff}}$ and $\kappa$ from data.
+Section 2 formalizes timing inaccessibility. Section 3 derives the Projection Bound. Section 4 quantifies path degeneracy. Section 5 gives a continuous (Kuramoto) example. Section 6 relates to prior work and discusses implications including camera-engine duality. \textbf{Version 2.0 additions:} Section 7 establishes framework dependence of timing (including the emergent character of temporal order). Section 8 derives implications for AI capability limits. Appendix A provides parameter sensitivity analysis for degeneracy estimates. Appendix B describes biological implementations across scales. Appendix C provides methods for estimating $D_{\mathrm{eff}}$ and $\kappa$ from data.
 
 \section{Timing Inaccessibility: The Physical Mechanism}
 
@@ -310,7 +300,7 @@ Even if $E_{\text{signal}} \ll \kB T\ln2$ per channel, $E_{\text{total}} \gtrsim
 
 \subsection{Why Purely Digital Internal State Evolution Cannot Do This}
 
-\textbf{Scope:} The following applies to architectures where all internal state transitions involve irreversible bit stabilization. Systems with analog front-ends or hybrid architectures can shift the projection boundary outward, accessing some sub-Landauer integration (see Section 9.3).
+\textbf{Scope:} The following applies to architectures where all internal state transitions involve irreversible bit stabilization. Systems with analog front-ends or hybrid architectures can shift the projection boundary outward, accessing some sub-Landauer integration (see \S\ref{sec:neuromorphic}).
 
 Fundamental architectural difference:
 
@@ -394,7 +384,7 @@ E_{\mathrm{collapse}} \geq \kB\Teff (D_{\mathrm{eff}} - D') \ln(L/\varepsilon)
 \end{theorem}
 
 \begin{proof}[Proof outline]
-\textbf{Step 1:} Define coarse-grained entropy as $S_\varepsilon = \kB(\ln N_\varepsilon - \mathrm{KL}(p\|U))$ where $U$ is uniform over the $N_\varepsilon$ cells.
+\textbf{Step 1:} Define coarse-grained entropy as $S_\varepsilon = \kB(\ln N_\varepsilon - \mathrm{KL}(p\|U))$ where $U$ is uniform over the $N_\varepsilon$ cells. \emph{Note:} Identifying $S_\varepsilon$ with a thermodynamic entropy that enters a Clausius inequality requires equilibrium or near-equilibrium (linear response) conditions. For far-from-equilibrium systems, $S_\varepsilon$ serves as an information-theoretic proxy; the bound remains valid as stated when $\Teff$ is the operationally measured noise--response ratio at the collapse mode (see validity conditions below).
 
 \textbf{Step 2:} The projection reduces support and alters $p$:
 \begin{align}
@@ -522,7 +512,7 @@ Recent quantum demons \cite{PhysRevResearch2024,PhysRevA2016} show coherence-ent
 
 \subsection{Spatial Scales and Information Capacity}
 
-Voronel \cite{voronel2018} and Bormashenko \cite{bormashenko2022} established that biological informational capacity is constrained by spatial scales. Biological systems exploit \emph{both} spatial and temporal fine-graining. Total capacity:
+Bormashenko and Voronel \cite{voronel2018} and Bormashenko \cite{bormashenko2022} established that biological informational capacity is constrained by spatial scales. Biological systems exploit \emph{both} spatial and temporal fine-graining. Total capacity:
 \begin{equation}
 E_{\text{collapse}} \geq k_BT_{\text{eff}} (D_{\text{spatial}} + D_{\text{temporal}}) \ln(L/\xi)
 \end{equation}
@@ -533,7 +523,7 @@ These prior frameworks quantify costs but don't fully capture how biological sub
 
 The classical demon is straightforward: a computer with memory that it periodically erases, paying $\kB T\ln 2$ per bit. The demon \emph{is} the memory.
 
-\textbf{The biological demon is more subtle.} It's not a memory device—it's a high-dimensional dynamical system that simultaneously functions as both \textbf{camera} (sensing environmental complexity) and \textbf{engine} (steering environmental dynamics). This dual role parallels both MacKenzie's observation that economic models both describe and shape markets \cite{mackenzie2006} and Boyd's OODA loop framework \cite{boyd1987}, where adaptive systems continuously observe, orient, decide, and act upon their environment. Here the duality is simultaneous rather than sequential, with thermodynamic cost concentrated at the decision/collapse point.
+\textbf{The biological demon is more subtle.} It is a high-dimensional dynamical system that simultaneously functions as both \textbf{camera} (sensing environmental complexity) and \textbf{engine} (steering environmental dynamics). The duality is simultaneous, with thermodynamic cost concentrated at the decision/collapse point.
 
 \medskip
 \noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{
@@ -554,9 +544,9 @@ The classical demon is straightforward: a computer with memory that it periodica
 
 \paragraph{Resolution of the Paradox}
 
-The demon doesn't "extract information" in the sense of writing bits. It \emph{becomes isomorphic} to environmental structure via dimensional resonance. Information exists in the \emph{correlation} between internal and external structure—physical (coupling energy) not epistemic (written records). Thermodynamic cost appears only when correlation must collapse to discrete action.
+The demon \emph{becomes isomorphic} to environmental structure via dimensional resonance rather than writing bits. Information exists in the physical \emph{correlation} between internal and external structure (coupling energy), and thermodynamic cost appears only when correlation collapses to discrete action.
 
-High-D systems can maintain mutual information through structural isomorphism without irreversible bit registration. A protein folding in response to chaperone binding doesn't "read" the chaperone's state—the protein's $10^{48}$ microstates resonantly couple to chaperone conformations. The mutual information exists in physical correlation, not written memory. Only when committing to native fold does dimensional collapse occur.
+High-$D$ systems maintain mutual information through structural isomorphism without irreversible bit registration. A protein's $10^{48}$ microstates resonantly couple to chaperone conformations; the mutual information exists in physical correlation. Dimensional collapse occurs only when the system commits to the native fold.
 
 Path degeneracy is the signature that structural correlation exists without bit registration. The system effectively explores a vast ensemble of micro-trajectories via thermal fluctuations while deferring any persistent record of order. Because individual coupling energies are $\ll \kB T\ln 2$, you cannot track "which path when" without measurement energy exceeding signal energy (back-action). Digital systems require supra-Landauer inputs per bit and cannot exploit this integration regime.
 
@@ -599,7 +589,7 @@ Digital architectures pay per recorded bit to guarantee precision and auditabili
 
 When timing is thermodynamically inaccessible, predictive compression is lower-bounded by emulation \cite{wolfram2002,louie2020,igamberdiev2014}. Temporal order is not thermodynamically accessible as a persistent record until irreversible registration. The temporal structure is \emph{created} by registration, not revealed. Any predictor must perform the same registration operations to create that structure—therefore must emulate the system up to collapse points.
 
-This isn't a computational limitation but fundamental physics. The "when" you're trying to predict doesn't exist until the projection creates it through dimensional collapse. In Igamberdiev's framework \cite{igamberdiev2014}, biological organization involves anticipatory systems where constraints precede values. Camera-engine duality enables this: the system maintains correlations (relational structure) without computing trajectories, allowing emergent functional meaning at collapse.
+The limitation is physical, not computational. Temporal structure is created by registration, not revealed, so any predictor must perform the same registration operations---and therefore emulate the system up to collapse points. In Igamberdiev's framework \cite{igamberdiev2014}, biological organization involves anticipatory systems where constraints precede values; camera-engine duality enables this by maintaining correlations without computing trajectories.
 
 \subsection{Limitations and Caveats}
 
@@ -647,7 +637,7 @@ Consider two observers measuring the same neural population:
 \item \textbf{Observer B} uses 20 ms temporal bins
 \end{itemize}
 
-Events that are ``sequential'' for Observer A may be ``simultaneous'' for Observer B. This is not merely a matter of precision---the two observers literally inhabit different causal worlds. A causes B for Observer A; A and B co-occur for Observer B.
+Events that are ``sequential'' for Observer A may be ``simultaneous'' for Observer B. The two observers inhabit different causal worlds: A causes B for Observer A; A and B co-occur for Observer B.
 
 The choice of temporal resolution is a \emph{framework choice} that precedes all measurement. It determines:
 \begin{enumerate}
@@ -677,7 +667,7 @@ Crucially, the ``true'' causal structure at the limit $\Delta t \to 0$ is thermo
 
 Scientific disagreements about timing-dependent phenomena (neural coding, protein dynamics, quantum biology) may reflect framework differences rather than empirical disputes. Researchers using different temporal resolutions are not making claims about the same causal structure.
 
-This is not relativism. The underlying physics exists independently of frameworks. But \emph{causal claims are framework-relative}, and the framework cannot be tested from within.
+The underlying physics exists independently of frameworks, but \emph{causal claims are framework-relative}, and the framework cannot be tested from within.
 
 \begin{figure}[htbp]
 \centering
@@ -686,35 +676,9 @@ This is not relativism. The underlying physics exists independently of framework
 \label{fig:framework-timing}
 \end{figure}
 
-\section{The ``When'' Is Created, Not Revealed}
-
 \subsection{Temporal Order as Emergent}
 
-The standard intuition treats temporal order as pre-existing: events occur in a definite sequence, and measurement merely reveals this sequence. We argue the opposite: \emph{temporal order is created at projection}.
-
-Before dimensional collapse, the system exists in a superposition (classically: an ensemble) of micro-trajectories. These trajectories have different internal orderings, but no ordering has been selected. The ``when'' is not a physically well-defined, testable property below the registration threshold; only the coarse-grained temporal order created at projection is operationally definable.
-
-This parallels the quantum measurement problem but operates classically at 300K. The mechanism is different (thermal degeneracy vs. quantum superposition) but the structure is isomorphic: measurement does not reveal pre-existing facts but creates them.
-
-\subsection{Implications for Causality}
-
-If temporal order is created at projection, then causal relationships are also created at projection. Before measurement, there is no fact of the matter about whether A caused B or B caused A---both orderings coexist in the degenerate ensemble.
-
-This suggests several conceptual possibilities (offered as implications worth exploring, not definitive claims):
-\begin{itemize}
-\item \textbf{Retrocausality reframed}: If the ``when'' doesn't exist until measurement, then the apparent paradox of ``backward'' causation dissolves---both forward and backward orderings are created at collapse, not revealed.
-\item \textbf{Free will reframed}: The question ``was the decision determined before it was made?'' presupposes a ``before'' that may not exist until the decision creates it. This does not resolve the free will debate but shifts its terms.
-\item \textbf{Emergent time}: Clock time may be a projection from higher-dimensional dynamics, not a fundamental substrate.
-\end{itemize}
-These implications are speculative and require further philosophical analysis. The physical claim---that temporal order is created at projection in sub-Landauer regimes---is what we defend here.
-
-\subsection{The Ensemble Clarification}
-
-A potential objection: ``Surely the individual events have definite timing, even if we can't measure it.''
-
-Response: Below the Landauer threshold, this claim is \emph{operationally undecidable in this regime}. There is no way, even in principle, to access the ``true'' ordering without spending energy that exceeds the signal. The ordering is not hidden---it is not operationally definable until projection creates it as a testable property.
-
-The ``bit'' that gets created at projection is a property of the \emph{ensemble}, not of individual sub-threshold events. Stochastic resonance detects that coordination occurred (ensemble property) without resolving which specific micro-trajectory was realized (individual property that doesn't exist pre-collapse).
+A philosophical consequence of framework-dependent timing: below the registration threshold, temporal order is not a physically well-defined, testable property of the system. The coarse-grained order that appears at projection is \emph{created} by the measurement framework, not revealed. Below the Landauer threshold, the ordering is operationally undecidable---there is no way to access the ``true'' micro-ordering without spending energy that exceeds the signal. Causal relationships inherit this framework dependence: what counts as ``A caused B'' depends on the temporal resolution chosen before measurement.
 
 \section{Implications for Artificial Intelligence}
 
@@ -746,9 +710,7 @@ Consequently, while a digital system can mathematically reproduce the \emph{outp
 
 \subsection{The Digital Ceiling}
 
-\textbf{Scope clarification:} The following applies to \emph{conventional digital architectures with irreversible bit-level state stabilization at each processing stage}. Asynchronous, event-driven, or reversible digital systems may blur some of these boundaries; hybrid analog-digital architectures explicitly circumvent them (see Section 9.3). Real AI systems already have analog front-ends (sensors, amplifiers, capacitive accumulation); the meaningful distinction is where the projection boundary is placed in the full pipeline.
-
-Conventional digital computers are committed to supra-Landauer discretization at the input boundary: every value entering the digital domain must be stabilized as bits, incurring $\ge \kB T\ln 2$ per bit. This architectural commitment has consequences:
+As in \S2.4, the following applies to conventional digital architectures with irreversible bit stabilization at each stage; hybrid architectures shift the boundary (\S\ref{sec:neuromorphic}). Conventional digital computers are committed to supra-Landauer discretization at the input boundary, with three consequences:
 
 \begin{enumerate}
 \item \textbf{No sub-Landauer integration}: Conventional digital systems cannot couple weakly to many sources and integrate before discretization. Each input must exceed the noise threshold \emph{before} it enters the digital domain. The integration regime accessible to continuous substrates is architecturally excluded.
@@ -758,9 +720,7 @@ Conventional digital computers are committed to supra-Landauer discretization at
 \item \textbf{State-space enumeration}: Simulating high-dimensional continuous dynamics requires explicit representation of states. While the \emph{thermodynamic} cost of registration scales linearly ($\sim D\log k$ bits), the \emph{algorithmic} cost of exploring or simulating fine-grained dynamics can scale exponentially with dimension for certain classes of systems.
 \end{enumerate}
 
-\textbf{Turing completeness vs.\ thermodynamic accessibility.} Digital systems are Turing complete: they can compute any computable function given sufficient time and memory. But purely digital internal state evolution (irreversible bit stabilization as the primitive) cannot exploit sub-Landauer integration \emph{without shifting the projection boundary outward into analog/hybrid components}. The claim here is not that digital systems cannot \emph{simulate} biological computation, but that they cannot do so with the same thermodynamic efficiency unless they incorporate analog elements that defer projection. This is a physical constraint, not a computational one.
-
-\textbf{Calculating vs.\ exploiting.} A digital computer can mathematically \emph{calculate} a protein's folding pathway, but it cannot physically \emph{exploit} the pathway's degeneracy for free integration. The biological substrate explores $10^{48}$ conformations via thermal fluctuations at no registration cost; the digital simulator must explicitly represent each state it considers. The distinction is between \emph{calculating the physics} (which requires energy proportional to state-space size) and \emph{using the physics} (which pays only at projection). Simulation can reproduce the output; it cannot reproduce the thermodynamic shortcut.
+\textbf{Turing completeness vs.\ thermodynamic accessibility.} Digital systems can compute any computable function given sufficient time and memory, but purely digital internal state evolution cannot exploit sub-Landauer integration without shifting the projection boundary into analog/hybrid components (\S\ref{sec:neuromorphic}). The constraint is physical, not computational: simulation can reproduce the output but not the thermodynamic shortcut.
 
 \subsection{What Conventional Digital AI Cannot Do}
 
@@ -777,22 +737,17 @@ If the sub-Landauer integration regime is essential for certain computations, th
 \textbf{Caveat:} These are mechanism-level distinctions. Behavioral approximation may still be achievable---a digital system might produce outputs indistinguishable from a biological system's outputs without using the same underlying mechanisms. The claim is about thermodynamic efficiency and substrate constraints, not about behavioral equivalence.
 
 \subsection{Neuromorphic and Analog Computing}
+\label{sec:neuromorphic}
 
 The framework clarifies why neuromorphic and analog computing show efficiency gains: they defer projection. An analog front-end can integrate sub-Landauer signals before digitization, paying the Landauer cost only at the analog-to-digital boundary.
 
-The efficiency gain is not merely ``better hardware''---it reflects access to a computational regime that digital systems cannot reach. This suggests:
+The efficiency gain reflects access to a computational regime that purely digital systems cannot reach:
 
 \begin{enumerate}
 \item \textbf{Hybrid architectures}: Analog sensing and integration, digital reasoning and output
 \item \textbf{Continuous latent spaces}: AI systems that maintain continuous internal representations, discretizing only at output
 \item \textbf{Embodied AI}: Systems where the ``computer'' is continuous with the ``sensor'' and ``actuator''
 \end{enumerate}
-
-\subsection{The Consciousness Question}
-
-\emph{Speculative.} If consciousness requires the kind of integration that occurs in the sub-Landauer regime---high-dimensional coherence across distributed elements, with temporal structure created rather than revealed---then digital systems may be fundamentally incapable of consciousness regardless of sophistication.
-
-This is not a claim that consciousness is ``mystical'' or non-physical. It is a conditional claim: \emph{if} certain integration properties are necessary for consciousness, \emph{then} digital substrates cannot provide them. Whether those properties are in fact necessary remains an open empirical and philosophical question. What we establish here is the substrate constraint: digital architectures are committed to supra-Landauer discretization and cannot access the sub-Landauer integration regime that continuous biological substrates exploit.
 
 \section{Conclusion}
 
@@ -887,20 +842,14 @@ Levin, M. (2021). Bioelectric signaling. \textit{Cell}, 184(8), 1971--1989.
 \bibitem{louie2020}
 Louie, A.H. (2020). Relational biology and Church's thesis. \textit{BioSystems}, 197, 104179.
 
-\bibitem{mackenzie2006}
-MacKenzie, D. (2006). \textit{An Engine, Not a Camera: How Financial Models Shape Markets}. MIT Press.
-
 \bibitem{miller2018}
 Miller, E.K., Lundqvist, M., Bastos, A.M. (2018). Working memory 2.0. \textit{Neuron}, 100(2), 463--475.
 
 \bibitem{voronel2018}
-Voronel, A. (2018). Spatial scales of living cells. \textit{Eur. Biophys. J.}, 47, 515--521.
+Bormashenko, E., Voronel, A. (2018). Spatial scales of living cells and their energetic and informational capacity. \textit{Eur. Biophys. J.}, 47, 515--521. doi: 10.1007/s00249-017-1267-x
 
 \bibitem{bormashenko2022}
-Bormashenko, E. (2022). Fibonacci sequences and pattern formation. \textit{Biophysica}, 2(3), 292--307.
-
-\bibitem{boyd1987}
-Boyd, J.R. (1987). \textit{A Discourse on Winning and Losing}. Air University Press. (Reprinted in \textit{The Essence of Winning and Losing}, ed. C. Richards \& C. Spinetta, 2012.)
+Bormashenko, E. (2022). Fibonacci sequences, symmetry and order in biological patterns, their sources, information origin and the Landauer principle. \textit{Biophysica}, 2(3), 292--307. doi: 10.3390/biophysica2030027
 
 \bibitem{bennett1982}
 Bennett, C.H. (1982). The thermodynamics of computation. \textit{Int. J. Theor. Phys.}, 21(12), 905--940.
@@ -930,7 +879,7 @@ Edelman, G.M., Gally, J.A. (2001). Degeneracy and complexity. \textit{PNAS}, 98(
 Horowitz, M. (2014). Computing's energy problem. \textit{IEEE ISSCC}, 10--14.
 
 \bibitem{frank2019}
-Frank, M.P. (2019). The physical limits of computing. \textit{Computing in Science \& Engineering}, 21(3), 16--26.
+Frank, M.P. (2002). The physical limits of computing. \textit{Computing in Science \& Engineering}, 4(3), 16--26. doi: 10.1109/5992.998637
 
 \bibitem{ott2008}
 Ott, E., Antonsen, T.M. (2008). Low dimensional behavior. \textit{Chaos}, 18, 037113.

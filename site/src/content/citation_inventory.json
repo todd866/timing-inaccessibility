@@ -1,0 +1,907 @@
+{
+  "summary": {
+    "paper_title": "Timing Inaccessibility and the Projection Bound",
+    "paper_doi": "10.1016/j.biosystems.2025.105632",
+    "cited_keys": 33,
+    "bib_entries": 32,
+    "cited_dois": 28,
+    "cited_without_doi": 4,
+    "uncited_bib_entries": [],
+    "missing_bib_entries": [
+      "louie2020"
+    ],
+    "paperlibrary_status_counts": {
+      "have_text": 25,
+      "no_doi": 4,
+      "needs_pdf": 3
+    },
+    "text_overrides_used": []
+  },
+  "references": [
+    {
+      "cite_key": "landauer1961",
+      "title": "Irreversibility and heat generation",
+      "authors": "Landauer, R.",
+      "year": "1961",
+      "journal": "IBM J. Res. Dev.",
+      "doi": "10.1147/rd.53.0183",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 121,
+          "context": "Landauer (1961): Identified the cost: not measurement, but erasure. Any logically irreversible operation (including resetting memory to reuse it) dissipates at least $ T 2$ per bit landauer1961. The demon can measure for free (in principle) but must eventually erase its memory, paying the thermodynamic cost."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1147-rd-53-0183",
+        "title": "Irreversibility and Heat Generation in the Computing Process",
+        "year": "1961",
+        "journal": "IBM Journal of Research and Development",
+        "source": "scihub",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1147-rd-53-0183.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1147-rd-53-0183.txt",
+        "has_text": true
+      },
+      "raw": "Landauer, R. (1961). Irreversibility and heat generation. IBM J. Res. Dev., 5(3), 183--191."
+    },
+    {
+      "cite_key": "sagawa2010",
+      "title": "Generalized Jarzynski equality",
+      "authors": "Sagawa, T., Ueda, M.",
+      "year": "2010",
+      "journal": "Phys. Rev. Lett.",
+      "doi": "10.1103/physrevlett.104.090602",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 542,
+          "context": "Why weak coupling avoids immediate costs: Sub-Landauer coupling creates mutual information through physical correlation (stored in joint state), not epistemic records. Following Sagawa-Ueda sagawa2010, thermodynamic cost appears only when correlation is measured and stabilized as discrete memory—the dimensional collapse."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1103-physrevlett-104-090602",
+        "title": "Generalized Jarzynski Equality under Nonequilibrium Feedback Control",
+        "year": "2010",
+        "journal": "Physical Review Letters",
+        "source": "unpaywall",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1103-physrevlett-104-090602.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1103-physrevlett-104-090602.txt",
+        "has_text": true
+      },
+      "raw": "Sagawa, T., Ueda, M. (2010). Generalized Jarzynski equality. Phys. Rev. Lett., 104, 090602."
+    },
+    {
+      "cite_key": "todd2025biosystems",
+      "title": "The limits of falsifiability: Dimensionality, measurement thresholds, and the sub-Landauer domain in biological systems",
+      "authors": "Todd, I.",
+      "year": "2025",
+      "journal": "BioSystems",
+      "doi": "10.1016/j.biosystems.2025.105608",
+      "url": "",
+      "citation_count": 4,
+      "contexts": [
+        {
+          "line": 56,
+          "context": "Version 2.0 clarifies the two-stage model (reversible correlation followed by irreversible projection), discusses temporal resolution as part of the measurement framework todd2025biosystems, and examines how the placement of the projection boundary constrains artificial systems."
+        },
+        {
+          "line": 206,
+          "context": "Connection to framework formalism. The companion paper todd2025biosystems (and its v2.0 extension) defines a framework $F = (M, R, D)$ as a triple of maps: measurement $M: X Y$, representation $R: Y Z$, and decision $D: Z \\0,1\\$. Each framework induces a partition on the state space $X$, and projection loss $L(F) := H(X) - I(X;Z)$ quantifies how much information about $X$ is destroyed by the framework choice. Here, temporal resolution $ t$ is a component of $M$---the choice of $ t$ determines what counts as ``simultaneous'' versus ``sequential'' and thereby determines which causal relationships are visible. Framework dependence of timing (7) is a special case of the general framework dependence of falsifiability."
+        },
+        {
+          "line": 218,
+          "context": "Following Todd (2025) todd2025biosystems, for reliable bit-level readout under thermal noise at temperature $T$ with irreversible stabilization, measurement at energy $E_meas$ extracts information bounded by:"
+        },
+        {
+          "line": 628,
+          "context": "The companion paper on falsifiability todd2025biosystems establishes that scientific frameworks are themselves projections---axiomatic choices about what variables matter, what counts as evidence, and how questions are structured. Version 2.0 of that analysis extends this to show that falsifiability is framework-relative: a hypothesis can only be falsified with respect to a given set of background assumptions."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1016-j-biosystems-2025-105608",
+        "title": "The limits of falsifiability: Dimensionality, measurement thresholds, and the sub-Landauer domain in biological systems",
+        "year": "2025",
+        "journal": "BioSystems",
+        "source": "harvest:laptop-audit",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1016-j-biosystems-2025-105608.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1016-j-biosystems-2025-105608.txt",
+        "has_text": true
+      },
+      "raw": "Todd, I. (2025). The limits of falsifiability: Dimensionality, measurement thresholds, and the sub-Landauer domain in biological systems. BioSystems, 258, 105608."
+    },
+    {
+      "cite_key": "mcdonnell2011",
+      "title": "The benefits of noise in neural systems",
+      "authors": "McDonnell, M.D., Ward, L.M.",
+      "year": "2011",
+      "journal": "Nat. Rev. Neurosci.",
+      "doi": "10.1038/nrn3061",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 263,
+          "context": "Natural objection: If stochastic resonance enables detection of sub-Landauer signals through population integration mcdonnell2011,stocks2000, doesn't this eliminate path degeneracy?"
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1038-nrn3061",
+        "title": "The benefits of noise in neural systems: bridging theory and experiment",
+        "year": "2011",
+        "journal": "Nature Reviews Neuroscience",
+        "source": "libgen",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1038-nrn3061.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1038-nrn3061.txt",
+        "has_text": true
+      },
+      "raw": "McDonnell, M.D., Ward, L.M. (2011). The benefits of noise in neural systems. Nat. Rev. Neurosci., 12(7), 415--426."
+    },
+    {
+      "cite_key": "stocks2000",
+      "title": "Suprathreshold stochastic resonance",
+      "authors": "Stocks, N.",
+      "year": "2000",
+      "journal": "Phys. Rev. Lett.",
+      "doi": "10.1103/physrevlett.84.2310",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 263,
+          "context": "Natural objection: If stochastic resonance enables detection of sub-Landauer signals through population integration mcdonnell2011,stocks2000, doesn't this eliminate path degeneracy?"
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1103-physrevlett-84-2310",
+        "title": "Suprathreshold Stochastic Resonance in Multilevel Threshold Systems",
+        "year": "2000",
+        "journal": "Physical Review Letters",
+        "source": "libgen",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1103-physrevlett-84-2310.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1103-physrevlett-84-2310.txt",
+        "has_text": true
+      },
+      "raw": "Stocks, N. (2000). Suprathreshold stochastic resonance. Phys. Rev. Lett., 84(11), 2310--2313."
+    },
+    {
+      "cite_key": "seifert2012",
+      "title": "Stochastic thermodynamics",
+      "authors": "Seifert, U.",
+      "year": "2012",
+      "journal": "Rep. Prog. Phys.",
+      "doi": "10.1088/0034-4885/75/12/126001",
+      "url": "",
+      "citation_count": 2,
+      "contexts": [
+        {
+          "line": 341,
+          "context": "For systems out of equilibrium, define $$ operationally via the fluctuation-dissipation relation seifert2012:"
+        },
+        {
+          "line": 355,
+          "context": "In equilibrium: $T_eff=T$. Out of equilibrium: $T_eff()$ is operational, evaluated at collapse mode $_0$. Note that in active biological systems driven by ATP hydrolysis or other energy sources, $$ can exceed ambient temperature $T$ seifert2012, reflecting enhanced effective noise from non-thermal fluctuations."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1088-0034-4885-75-12-126001",
+        "title": "Stochastic thermodynamics, fluctuation theorems and molecular machines",
+        "year": "2012",
+        "journal": "Reports on Progress in Physics",
+        "source": "unpaywall",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1088-0034-4885-75-12-126001.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1088-0034-4885-75-12-126001.txt",
+        "has_text": true
+      },
+      "raw": "Seifert, U. (2012). Stochastic thermodynamics. Rep. Prog. Phys., 75, 126001."
+    },
+    {
+      "cite_key": "kolmogorov1959",
+      "title": "$$-entropy",
+      "authors": "Kolmogorov, A.N., Tikhomirov, V.M.",
+      "year": "1959",
+      "journal": "Russ. Math. Surv.",
+      "doi": "",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 424,
+          "context": "For continuous manifold $M$, the metric $$-entropy kolmogorov1959:"
+        }
+      ],
+      "paperlibrary_status": "no_doi",
+      "paperlibrary": {},
+      "raw": "Kolmogorov, A.N., Tikhomirov, V.M. (1959). $$-entropy. Russ. Math. Surv., 14(2), 3--86."
+    },
+    {
+      "cite_key": "slepian1961",
+      "title": "Prolate spheroidal wave functions, I",
+      "authors": "Slepian, D., Pollak, H.O.",
+      "year": "1961",
+      "journal": "Bell Syst. Tech. J.",
+      "doi": "",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 432,
+          "context": "For oscillator system with coherence time $_c$ and temporal resolution $ t$, the time-bandwidth product $_c/ t$ bounds independent temporal modes slepian1961, yielding:"
+        }
+      ],
+      "paperlibrary_status": "no_doi",
+      "paperlibrary": {},
+      "raw": "Slepian, D., Pollak, H.O. (1961). Prolate spheroidal wave functions, I. Bell Syst. Tech. J., 40(1), 43--63."
+    },
+    {
+      "cite_key": "stringer2019",
+      "title": "Spontaneous behaviors drive multidimensional activity",
+      "authors": "Stringer, C., et al.",
+      "year": "2019",
+      "journal": "Science",
+      "doi": "10.1126/science.aav7893",
+      "url": "",
+      "citation_count": 2,
+      "contexts": [
+        {
+          "line": 459,
+          "context": "Dimensionality increase: $ D_eff 50$ (consistent with stringer2019)"
+        },
+        {
+          "line": 965,
+          "context": "Either (i) use covariance $C=1T-1(X- X)^(X- X)$, or (ii) build a phase-coherence matrix $W$ with entries $W_ij=|1T_t e^i(_i(t)-_j(t))|$ (inter-site phase coherence, ISPC stringer2019). Normalize $W$ to unit trace to avoid scale artifacts."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1126-science-aav7893",
+        "title": "Spontaneous behaviors drive multidimensional, brainwide activity",
+        "year": "2019",
+        "journal": "Science",
+        "source": "harvest:laptop-audit",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1126-science-aav7893.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1126-science-aav7893.txt",
+        "has_text": true
+      },
+      "raw": "Stringer, C., et al. (2019). Spontaneous behaviors drive multidimensional activity. Science, 364(6437), eaav7893."
+    },
+    {
+      "cite_key": "bian2025ddga",
+      "title": "Quantifying energy landscape of high-dimensional oscillatory systems by diffusion decomposition",
+      "authors": "Bian, S., Zhou, R., Lin, W., Li, C.",
+      "year": "2025",
+      "journal": "Cell Rep. Phys. Sci.",
+      "doi": "10.1016/j.xcrp.2025.102405",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 499,
+          "context": "This is the continuous analog of Landauer's bound---fully geometric, no discrete bits. Bian et al.\\ bian2025ddga observe numerical ``covariance explosion'' in high-dimensional oscillatory systems at fine temporal resolution, which is consistent with---though not direct evidence for---the thermodynamic bounds derived here."
+        }
+      ],
+      "paperlibrary_status": "needs_pdf",
+      "paperlibrary": {},
+      "raw": "Bian, S., Zhou, R., Lin, W., Li, C. (2025). Quantifying energy landscape of high-dimensional oscillatory systems by diffusion decomposition. Cell Rep. Phys. Sci., 6, 102405. doi: 10.1016/j.xcrp.2025.102405"
+    },
+    {
+      "cite_key": "parrondo1996",
+      "title": "Criticism of Feynman's analysis of the ratchet",
+      "authors": "Parrondo, J.M.R., Español, P.",
+      "year": "1996",
+      "journal": "Am. J. Phys.",
+      "doi": "10.1119/1.18393",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 505,
+          "context": "Prior continuous demons parrondo1996,vaikuntanathan2009,allahverdyan2009 quantify costs via mutual information. Our contribution: (i) classical biological substrate at 300K, (ii) metric-entropy covering numbers at finite resolution, (iii) timing inaccessibility as mechanism, (iv) path degeneracy from dimensional structure."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1119-1-18393",
+        "title": "Criticism of Feynman’s analysis of the ratchet as an engine",
+        "year": "1996",
+        "journal": "American Journal of Physics",
+        "source": "libgen",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1119-1-18393.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1119-1-18393.txt",
+        "has_text": true
+      },
+      "raw": "Parrondo, J.M.R., Español, P. (1996). Criticism of Feynman's analysis of the ratchet. Am. J. Phys., 64, 1125--1130."
+    },
+    {
+      "cite_key": "vaikuntanathan2009",
+      "title": "Dissipation and lag in irreversible processes",
+      "authors": "Vaikuntanathan, S., Jarzynski, C.",
+      "year": "2009",
+      "journal": "Europhys. Lett.",
+      "doi": "10.1209/0295-5075/87/60005",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 505,
+          "context": "Prior continuous demons parrondo1996,vaikuntanathan2009,allahverdyan2009 quantify costs via mutual information. Our contribution: (i) classical biological substrate at 300K, (ii) metric-entropy covering numbers at finite resolution, (iii) timing inaccessibility as mechanism, (iv) path degeneracy from dimensional structure."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1209-0295-5075-87-60005",
+        "title": "Dissipation and lag in irreversible processes",
+        "year": "2009",
+        "journal": "EPL (Europhysics Letters)",
+        "source": "unpaywall",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1209-0295-5075-87-60005.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1209-0295-5075-87-60005.txt",
+        "has_text": true
+      },
+      "raw": "Vaikuntanathan, S., Jarzynski, C. (2009). Dissipation and lag in irreversible processes. Europhys. Lett., 87, 60005."
+    },
+    {
+      "cite_key": "allahverdyan2009",
+      "title": "Maxwell's demon in the quantum world",
+      "authors": "Allahverdyan, A.E., et al.",
+      "year": "2009",
+      "journal": "Rev. Mod. Phys.",
+      "doi": "10.1103/revmodphys.81.1665",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 505,
+          "context": "Prior continuous demons parrondo1996,vaikuntanathan2009,allahverdyan2009 quantify costs via mutual information. Our contribution: (i) classical biological substrate at 300K, (ii) metric-entropy covering numbers at finite resolution, (iii) timing inaccessibility as mechanism, (iv) path degeneracy from dimensional structure."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1103-revmodphys-81-1665",
+        "title": "Nonequilibrium fluctuations, fluctuation theorems, and counting statistics in quantum systems",
+        "year": "2009",
+        "journal": "Reviews of Modern Physics",
+        "source": "libgen",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1103-revmodphys-81-1665.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1103-revmodphys-81-1665.txt",
+        "has_text": true
+      },
+      "raw": "Allahverdyan, A.E., et al. (2009). Maxwell's demon in the quantum world. Rev. Mod. Phys., 81, 1665--1702."
+    },
+    {
+      "cite_key": "PhysRevResearch2024",
+      "title": "Maxwell's demon across the quantum-to-classical transition",
+      "authors": "Annby-Andersson, B., et al.",
+      "year": "2024",
+      "journal": "Phys. Rev. Research",
+      "doi": "10.1103/physrevresearch.6.043216",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 511,
+          "context": "Recent quantum demons PhysRevResearch2024,PhysRevA2016 show coherence-entropy trade-offs with mathematical isomorphism $S() H_$. Physical mechanisms differ—quantum superposition (mK, $$s) vs. classical path degeneracy (300K, ms)—yet both yield isomorphic bounds. The dimensional geometry may unify quantum and classical regimes, differing in mechanism (coherent superposition vs thermal degeneracy) but not fundamental structure."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1103-physrevresearch-6-043216",
+        "title": "Maxwell's demon across the quantum-to-classical transition",
+        "year": "2024",
+        "journal": "Physical Review Research",
+        "source": "harvest:laptop-audit",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1103-physrevresearch-6-043216.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1103-physrevresearch-6-043216.txt",
+        "has_text": true
+      },
+      "raw": "Annby-Andersson, B., et al. (2024). Maxwell's demon across the quantum-to-classical transition. Phys. Rev. Research, 6, 043216."
+    },
+    {
+      "cite_key": "PhysRevA2016",
+      "title": "Entanglement and coherence in quantum state merging",
+      "authors": "Lebedev, A.V., Lesovik, G.B., Blatter, G.",
+      "year": "2016",
+      "journal": "Phys. Rev. A",
+      "doi": "10.1103/physrevlett.116.240405",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 511,
+          "context": "Recent quantum demons PhysRevResearch2024,PhysRevA2016 show coherence-entropy trade-offs with mathematical isomorphism $S() H_$. Physical mechanisms differ—quantum superposition (mK, $$s) vs. classical path degeneracy (300K, ms)—yet both yield isomorphic bounds. The dimensional geometry may unify quantum and classical regimes, differing in mechanism (coherent superposition vs thermal degeneracy) but not fundamental structure."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1103-physrevlett-116-240405",
+        "title": "Entanglement and Coherence in Quantum State Merging",
+        "year": "2016",
+        "journal": "Physical Review Letters",
+        "source": "libgen",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1103-physrevlett-116-240405.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1103-physrevlett-116-240405.txt",
+        "has_text": true
+      },
+      "raw": "Lebedev, A.V., Lesovik, G.B., Blatter, G. (2016). Entanglement and coherence in quantum state merging. Phys. Rev. A, 94, 052133."
+    },
+    {
+      "cite_key": "wolfram2002",
+      "title": "A New Kind of Science",
+      "authors": "Wolfram, S.",
+      "year": "2002",
+      "journal": "",
+      "doi": "",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 590,
+          "context": "When timing is thermodynamically inaccessible, predictive compression is lower-bounded by emulation wolfram2002,louie2020,igamberdiev2014. Temporal order is not thermodynamically accessible as a persistent record until irreversible registration. The temporal structure is created by registration, not revealed. Any predictor must perform the same registration operations to create that structure—therefore must emulate the system up to collapse points."
+        }
+      ],
+      "paperlibrary_status": "no_doi",
+      "paperlibrary": {},
+      "raw": "Wolfram, S. (2002). A New Kind of Science. Wolfram Media."
+    },
+    {
+      "cite_key": "igamberdiev2014",
+      "title": "Time rescaling and pattern formation in biological evolution",
+      "authors": "Igamberdiev, A.U.",
+      "year": "2014",
+      "journal": "BioSystems",
+      "doi": "10.1016/j.biosystems.2014.03.002",
+      "url": "",
+      "citation_count": 2,
+      "contexts": [
+        {
+          "line": 590,
+          "context": "When timing is thermodynamically inaccessible, predictive compression is lower-bounded by emulation wolfram2002,louie2020,igamberdiev2014. Temporal order is not thermodynamically accessible as a persistent record until irreversible registration. The temporal structure is created by registration, not revealed. Any predictor must perform the same registration operations to create that structure—therefore must emulate the system up to collapse points."
+        },
+        {
+          "line": 592,
+          "context": "The limitation is physical, not computational. Temporal structure is created by registration, not revealed, so any predictor must perform the same registration operations---and therefore emulate the system up to collapse points. In Igamberdiev's framework igamberdiev2014, biological organization involves anticipatory systems where constraints precede values; camera-engine duality enables this by maintaining correlations without computing trajectories."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1016-j-biosystems-2014-03-002",
+        "title": "Time rescaling and pattern formation in biological evolution",
+        "year": "2014",
+        "journal": "Biosystems",
+        "source": "harvest:laptop-audit",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1016-j-biosystems-2014-03-002.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1016-j-biosystems-2014-03-002.txt",
+        "has_text": true
+      },
+      "raw": "Igamberdiev, A.U. (2014). Time rescaling and pattern formation in biological evolution. BioSystems, 123, 19--26. doi: 10.1016/j.biosystems.2014.03.002"
+    },
+    {
+      "cite_key": "voronel2018",
+      "title": "Spatial scales of living cells and their energetic and informational capacity",
+      "authors": "Bormashenko, E., Voronel, A.",
+      "year": "2018",
+      "journal": "Eur. Biophys. J.",
+      "doi": "10.1007/s00249-017-1267-x",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 515,
+          "context": "Bormashenko and Voronel voronel2018 and Bormashenko bormashenko2022 established that biological informational capacity is constrained by spatial scales. When the system's attractor has both spatial degrees of freedom ($D_spatial$, at resolution $$) and temporal degrees of freedom ($D_temporal$, at resolution $ t$), the total covering number factorises: $N_ (L/)^D_spatial (/ t)^D_temporal$. Applying the Projection Bound (Theorem~thm:projection-bound) to the combined manifold:"
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1007-s00249-017-1267-x",
+        "title": "Spatial scales of living cells and their energetic and informational capacity",
+        "year": "2017",
+        "journal": "European Biophysics Journal",
+        "source": "aa_fast_download",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1007-s00249-017-1267-x.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1007-s00249-017-1267-x.txt",
+        "has_text": true
+      },
+      "raw": "Bormashenko, E., Voronel, A. (2018). Spatial scales of living cells and their energetic and informational capacity. Eur. Biophys. J., 47, 515--521. doi: 10.1007/s00249-017-1267-x"
+    },
+    {
+      "cite_key": "bormashenko2022",
+      "title": "Fibonacci sequences, symmetry and order in biological patterns, their sources, information origin and the Landauer principle",
+      "authors": "Bormashenko, E.",
+      "year": "2022",
+      "journal": "Biophysica",
+      "doi": "10.3390/biophysica2030027",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 515,
+          "context": "Bormashenko and Voronel voronel2018 and Bormashenko bormashenko2022 established that biological informational capacity is constrained by spatial scales. When the system's attractor has both spatial degrees of freedom ($D_spatial$, at resolution $$) and temporal degrees of freedom ($D_temporal$, at resolution $ t$), the total covering number factorises: $N_ (L/)^D_spatial (/ t)^D_temporal$. Applying the Projection Bound (Theorem~thm:projection-bound) to the combined manifold:"
+        }
+      ],
+      "paperlibrary_status": "needs_pdf",
+      "paperlibrary": {},
+      "raw": "Bormashenko, E. (2022). Fibonacci sequences, symmetry and order in biological patterns, their sources, information origin and the Landauer principle. Biophysica, 2(3), 292--307. doi: 10.3390/biophysica2030027"
+    },
+    {
+      "cite_key": "bennett1982",
+      "title": "The thermodynamics of computation",
+      "authors": "Bennett, C.H.",
+      "year": "1982",
+      "journal": "Int. J. Theor. Phys.",
+      "doi": "10.1007/bf02084158",
+      "url": "",
+      "citation_count": 5,
+      "contexts": [
+        {
+          "line": 123,
+          "context": "Bennett (1973, 1982): Completed the resolution. The demon's memory is finite; to continue operating, it must erase old measurements. This erasure cost exactly compensates the work extracted. The second law is saved bennett1982."
+        },
+        {
+          "line": 157,
+          "context": "Energy dissipated during tracking: $E_digital (160--332) T 2 4.610^-19$--$9.5 10^-19$ J (ideal Landauer floor; practical CMOS is typically far higher, while fully reversible logic can approach the floor only with severe speed and noise-tolerance tradeoffs bennett1982,horowitz2014)"
+        },
+        {
+          "line": 168,
+          "context": "Efficiency gain: $ 160$--$330$ at the theoretical Landauer limit. In practice the gap is much larger because contemporary digital hardware operates well above that floor horowitz2014. Reversible computing can, in principle, narrow the gap bennett1982, but only with substantial speed and noise-tolerance tradeoffs. Digital architectures pay per recorded bit; continuous substrates defer recording and pay at projection. Analog and neuromorphic systems gain efficiency to the extent that they also defer discretization."
+        },
+        {
+          "line": 507,
+          "context": "Bennett bennett1982 established that logical reversibility bounds energy only if computation is quasi-static and low-noise. Still et al. still2012 showed predictive information confers thermodynamic advantage, but creating/storing it has minimal work cost. Kolchinsky & Wolpert kolchinsky2018 demonstrated that minimal work depends on changes in non-equilibrium distributions—aligning with our Projection Bound via $ N_$ and KL terms."
+        },
+        {
+          "line": 762,
+          "context": "To know what water does, use water. To know what a protein does, use a protein. To know what neurons do, use neurons. Digital simulation incurs exponential state-space costs for many such tasks, though reversible computing may asymptotically approach thermodynamic bounds with severe speed and noise-tolerance tradeoffs bennett1982,frank2019."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1007-bf02084158",
+        "title": "The thermodynamics of computation—a review",
+        "year": "1982",
+        "journal": "International Journal of Theoretical Physics",
+        "source": "aa_fast_download",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1007-bf02084158.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1007-bf02084158.txt",
+        "has_text": true
+      },
+      "raw": "Bennett, C.H. (1982). The thermodynamics of computation. Int. J. Theor. Phys., 21(12), 905--940."
+    },
+    {
+      "cite_key": "leff2002",
+      "title": "Maxwell's Demon 2: Entropy, Classical and Quantum Information, Computing",
+      "authors": "Leff, H.S., Rex, A.F.",
+      "year": "2002",
+      "journal": "",
+      "doi": "10.1201/9781420033991",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 117,
+          "context": "Maxwell (1867): Proposed a ``finite being'' that could sort fast and slow molecules between chambers, apparently creating temperature gradients (and extracting work) without doing work itself---violating the second law leff2002."
+        }
+      ],
+      "paperlibrary_status": "needs_pdf",
+      "paperlibrary": {},
+      "raw": "Leff, H.S., Rex, A.F. (2002). Maxwell's Demon 2: Entropy, Classical and Quantum Information, Computing. CRC Press."
+    },
+    {
+      "cite_key": "szilard1929",
+      "title": "Über die Entropieverminderung in einem thermodynamischen System bei Eingriffen intelligenter Wesen",
+      "authors": "Szilard, L.",
+      "year": "1929",
+      "journal": "Z. Phys.",
+      "doi": "10.1007/bf01339918",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 119,
+          "context": "Szilard (1929): Formalized the demon as a thermodynamic engine. In Szilard's single-molecule engine, the demon (i) measures which half of a box contains a molecule, (ii) inserts a partition, and (iii) extracts $ T 2$ of work via isothermal expansion. Szilard showed that the demon must acquire information to operate, connecting information to thermodynamics szilard1929."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1007-bf01339918",
+        "title": "�ber die Entropieverminderung in einem thermodynamischen System bei Eingriffen intelligenter Wesen",
+        "year": "1929",
+        "journal": "Zeitschrift f�r Physik",
+        "source": "libgen",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1007-bf01339918.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1007-bf01339918.txt",
+        "has_text": true
+      },
+      "raw": "Szilard, L. (1929). Über die Entropieverminderung in einem thermodynamischen System bei Eingriffen intelligenter Wesen. Z. Phys., 53, 840--856. [English translation: ``On the decrease of entropy in a thermodynamic system by the intervention of intelligent beings.'' Behavioral Science, 9(4), 301--310 (1964).]"
+    },
+    {
+      "cite_key": "still2012",
+      "title": "Thermodynamics of prediction",
+      "authors": "Still, S., et al.",
+      "year": "2012",
+      "journal": "Phys. Rev. Lett.",
+      "doi": "10.1103/physrevlett.109.120604",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 507,
+          "context": "Bennett bennett1982 established that logical reversibility bounds energy only if computation is quasi-static and low-noise. Still et al. still2012 showed predictive information confers thermodynamic advantage, but creating/storing it has minimal work cost. Kolchinsky & Wolpert kolchinsky2018 demonstrated that minimal work depends on changes in non-equilibrium distributions—aligning with our Projection Bound via $ N_$ and KL terms."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1103-physrevlett-109-120604",
+        "title": "Thermodynamics of Prediction",
+        "year": "2012",
+        "journal": "Physical Review Letters",
+        "source": "unpaywall",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1103-physrevlett-109-120604.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1103-physrevlett-109-120604.txt",
+        "has_text": true
+      },
+      "raw": "Still, S., et al. (2012). Thermodynamics of prediction. Phys. Rev. Lett., 109(12), 120604."
+    },
+    {
+      "cite_key": "kolchinsky2018",
+      "title": "Semantic information",
+      "authors": "Kolchinsky, A., Wolpert, D.H.",
+      "year": "2018",
+      "journal": "Interface Focus",
+      "doi": "10.1098/rsfs.2018.0041",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 507,
+          "context": "Bennett bennett1982 established that logical reversibility bounds energy only if computation is quasi-static and low-noise. Still et al. still2012 showed predictive information confers thermodynamic advantage, but creating/storing it has minimal work cost. Kolchinsky & Wolpert kolchinsky2018 demonstrated that minimal work depends on changes in non-equilibrium distributions—aligning with our Projection Bound via $ N_$ and KL terms."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1098-rsfs-2018-0041",
+        "title": "Semantic information, autonomous agency and non-equilibrium statistical physics",
+        "year": "2018",
+        "journal": "Interface Focus",
+        "source": "europepmc",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1098-rsfs-2018-0041.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1098-rsfs-2018-0041.txt",
+        "has_text": true
+      },
+      "raw": "Kolchinsky, A., Wolpert, D.H. (2018). Semantic information. Interface Focus, 8(6), 20180041."
+    },
+    {
+      "cite_key": "sivak2012",
+      "title": "Thermodynamic metrics",
+      "authors": "Sivak, D.A., Crooks, G.E.",
+      "year": "2012",
+      "journal": "Phys. Rev. Lett.",
+      "doi": "10.1103/physrevlett.108.190602",
+      "url": "",
+      "citation_count": 2,
+      "contexts": [
+        {
+          "line": 416,
+          "context": "Finite-time correction: Finite-time protocols add thermodynamic-length term $L^2/(4)$ sivak2012. For neural decisions at $ $ ms timescales with typical $L 10$, excess dissipation $ 10^-20$ J is small compared to quasistatic bound ($ 10^-19$--$10^-18$ J for $D_eff 50$--$200$)."
+        },
+        {
+          "line": 601,
+          "context": "Future work could simulate finite-time corrections using thermodynamic geometry sivak2012"
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1103-physrevlett-108-190602",
+        "title": "Thermodynamic Metrics and Optimal Paths",
+        "year": "2012",
+        "journal": "Physical Review Letters",
+        "source": "unpaywall",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1103-physrevlett-108-190602.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1103-physrevlett-108-190602.txt",
+        "has_text": true
+      },
+      "raw": "Sivak, D.A., Crooks, G.E. (2012). Thermodynamic metrics. Phys. Rev. Lett., 108, 190602."
+    },
+    {
+      "cite_key": "coverthomas",
+      "title": "Elements of Information Theory",
+      "authors": "Cover, T.M., Thomas, J.A.",
+      "year": "2006",
+      "journal": "",
+      "doi": "10.1002/047174882x",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 222,
+          "context": "This bounds reliable extraction; stabilization then imposes $ T 2$ per recorded bit. The bound follows from the AWGN limit where reliable bit recovery (error probability bounded away from 1/2) demands $E_b/N_0 2$ verdu2002,coverthomas. Detection capacity (AWGN, $E_b/N_0 2$) is separate from recording/erasure cost (Landauer, $ T 2$ per bit). The former bounds channel capacity (cf. Verdú's $E_b/N_0 2$); the latter applies when information is irreversibly stabilized as memory (Landauer's $ T 2$)."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1002-047174882x",
+        "title": "Elements of Information Theory",
+        "year": "2005",
+        "journal": "",
+        "source": "libgen",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1002-047174882x.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1002-047174882x.txt",
+        "has_text": true
+      },
+      "raw": "Cover, T.M., Thomas, J.A. (2006). Elements of Information Theory. Wiley."
+    },
+    {
+      "cite_key": "horowitz2014",
+      "title": "Computing's energy problem",
+      "authors": "Horowitz, M.",
+      "year": "2014",
+      "journal": "IEEE ISSCC",
+      "doi": "10.1109/isscc.2014.6757323",
+      "url": "",
+      "citation_count": 3,
+      "contexts": [
+        {
+          "line": 87,
+          "context": "The energetic puzzle is stark: a human brain performs sophisticated computations at $\\!20$\\,W, whereas comparable digital systems require orders of magnitude more power horowitz2014. If biological systems acquired and recorded information as discrete bits, Landauer's principle would demand a dissipation of at least $ T 2$ per bit. Yet measured neural energetics are far below what such pervasive bit--level bookkeeping would imply."
+        },
+        {
+          "line": 157,
+          "context": "Energy dissipated during tracking: $E_digital (160--332) T 2 4.610^-19$--$9.5 10^-19$ J (ideal Landauer floor; practical CMOS is typically far higher, while fully reversible logic can approach the floor only with severe speed and noise-tolerance tradeoffs bennett1982,horowitz2014)"
+        },
+        {
+          "line": 168,
+          "context": "Efficiency gain: $ 160$--$330$ at the theoretical Landauer limit. In practice the gap is much larger because contemporary digital hardware operates well above that floor horowitz2014. Reversible computing can, in principle, narrow the gap bennett1982, but only with substantial speed and noise-tolerance tradeoffs. Digital architectures pay per recorded bit; continuous substrates defer recording and pay at projection. Analog and neuromorphic systems gain efficiency to the extent that they also defer discretization."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1109-isscc-2014-6757323",
+        "title": "1.1 Computing's energy problem (and what we can do about it)",
+        "year": "2014",
+        "journal": "2014 IEEE International Solid-State Circuits Conference Digest of Technical Papers (ISSCC)",
+        "source": "aa_fast_download",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1109-isscc-2014-6757323.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1109-isscc-2014-6757323.txt",
+        "has_text": true
+      },
+      "raw": "Horowitz, M. (2014). Computing's energy problem. IEEE ISSCC, 10--14."
+    },
+    {
+      "cite_key": "frank2019",
+      "title": "The physical limits of computing",
+      "authors": "Frank, M.P.",
+      "year": "2002",
+      "journal": "Computing in Science & Engineering",
+      "doi": "10.1109/5992.998637",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 762,
+          "context": "To know what water does, use water. To know what a protein does, use a protein. To know what neurons do, use neurons. Digital simulation incurs exponential state-space costs for many such tasks, though reversible computing may asymptotically approach thermodynamic bounds with severe speed and noise-tolerance tradeoffs bennett1982,frank2019."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1109-5992-998637",
+        "title": "The physical limits of computing",
+        "year": "2002",
+        "journal": "Computing in Science &amp; Engineering",
+        "source": "libgen",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1109-5992-998637.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1109-5992-998637.txt",
+        "has_text": true
+      },
+      "raw": "Frank, M.P. (2002). The physical limits of computing. Computing in Science & Engineering, 4(3), 16--26. doi: 10.1109/5992.998637"
+    },
+    {
+      "cite_key": "ott2008",
+      "title": "Low dimensional behavior",
+      "authors": "Ott, E., Antonsen, T.M.",
+      "year": "2008",
+      "journal": "Chaos",
+      "doi": "10.1063/1.2930766",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 489,
+          "context": "Synchronized regime (strong coupling, $r 1$): $D_eff 2$ (Ott-Antonsen manifold for Lorentzian $g()$ under analyticity assumptions ott2008,ott2009)"
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1063-1-2930766",
+        "title": "Low dimensional behavior of large systems of globally coupled oscillators",
+        "year": "2008",
+        "journal": "Chaos: An Interdisciplinary Journal of Nonlinear Science",
+        "source": "unpaywall",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1063-1-2930766.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1063-1-2930766.txt",
+        "has_text": true
+      },
+      "raw": "Ott, E., Antonsen, T.M. (2008). Low dimensional behavior. Chaos, 18, 037113."
+    },
+    {
+      "cite_key": "ott2009",
+      "title": "Long time evolution",
+      "authors": "Ott, E., Antonsen, T.M.",
+      "year": "2009",
+      "journal": "Chaos",
+      "doi": "10.1063/1.3136851",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 489,
+          "context": "Synchronized regime (strong coupling, $r 1$): $D_eff 2$ (Ott-Antonsen manifold for Lorentzian $g()$ under analyticity assumptions ott2008,ott2009)"
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1063-1-3136851",
+        "title": "Long time evolution of phase oscillator systems",
+        "year": "2009",
+        "journal": "Chaos: An Interdisciplinary Journal of Nonlinear Science",
+        "source": "unpaywall",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1063-1-3136851.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1063-1-3136851.txt",
+        "has_text": true
+      },
+      "raw": "Ott, E., Antonsen, T.M. (2009). Long time evolution. Chaos, 19, 023117."
+    },
+    {
+      "cite_key": "anastassiou2011",
+      "title": "Ephaptic coupling",
+      "authors": "Anastassiou, C.A., et al.",
+      "year": "2011",
+      "journal": "Nat. Neurosci.",
+      "doi": "10.1038/nn.2727",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 299,
+          "context": "Ephaptic coupling: Extracellular fields $ 0.1$--$1$ mV/mm over neuronal membrane ($C_m 1$ $$F/cm$^2$) yield work $ 10^-23$--$10^-22$ J per neuron ($ 3 10^-3$--$3 10^-2$ times $ T 2$) (see anastassiou2011 for field strengths and scaling)."
+        }
+      ],
+      "paperlibrary_status": "have_text",
+      "paperlibrary": {
+        "slug": "10-1038-nn-2727",
+        "title": "Ephaptic coupling of cortical neurons",
+        "year": "2011",
+        "journal": "Nature Neuroscience",
+        "source": "harvest:laptop-audit",
+        "pdf_path": "/Users/iantodd/Projects/PaperLibrary/pdfs/10-1038-nn-2727.pdf",
+        "text_path": "/Users/iantodd/Projects/PaperLibrary/text/10-1038-nn-2727.txt",
+        "has_text": true
+      },
+      "raw": "Anastassiou, C.A., et al. (2011). Ephaptic coupling. Nat. Neurosci., 14(2), 217--223."
+    },
+    {
+      "cite_key": "verdu2002",
+      "title": "Spectral efficiency",
+      "authors": "Verd\\'u, S.",
+      "year": "2002",
+      "journal": "IEEE Trans. Inf. Theory",
+      "doi": "",
+      "url": "",
+      "citation_count": 1,
+      "contexts": [
+        {
+          "line": 222,
+          "context": "This bounds reliable extraction; stabilization then imposes $ T 2$ per recorded bit. The bound follows from the AWGN limit where reliable bit recovery (error probability bounded away from 1/2) demands $E_b/N_0 2$ verdu2002,coverthomas. Detection capacity (AWGN, $E_b/N_0 2$) is separate from recording/erasure cost (Landauer, $ T 2$ per bit). The former bounds channel capacity (cf. Verdú's $E_b/N_0 2$); the latter applies when information is irreversibly stabilized as memory (Landauer's $ T 2$)."
+        }
+      ],
+      "paperlibrary_status": "no_doi",
+      "paperlibrary": {},
+      "raw": "Verd\\'u, S. (2002). Spectral efficiency. IEEE Trans. Inf. Theory, 48(6), 1319--1343."
+    }
+  ]
+}

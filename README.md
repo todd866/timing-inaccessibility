@@ -1,5 +1,7 @@
 # Timing Inaccessibility and the Projection Bound
 
+**2026 edition:** a rewrite of this paper as I would write it today, with AI-assisted checking. See [`2026-edition/`](2026-edition/) ([PDF](2026-edition/timing_inaccessibility_2026.pdf)). The published article remains the version of record.
+
 **Resolving Maxwell's Demon for Continuous Biological Substrates**
 
 **Published in BioSystems 258, 105632 (2025)**

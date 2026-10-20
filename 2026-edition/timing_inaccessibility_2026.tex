@@ -1,0 +1,375 @@
+\documentclass[10pt,a4paper,twocolumn]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=20mm,columnsep=7mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\kB}{k_{\mathrm B}}
+\newcommand{\KL}{D_{\mathrm{KL}}}
+\newtheorem{proposition}{Proposition}
+\numberwithin{equation}{section}
+\setlength{\parindent}{1em}
+\setlength{\emergencystretch}{1.5em}
+\hypersetup{pdftitle={Timing Inaccessibility and the Projection Bound: 2026 Edition},pdfauthor={Ian Todd}}
+
+\begin{document}
+\raggedbottom
+\twocolumn[{
+\begin{center}
+{\LARGE Timing Inaccessibility and the Projection Bound:\par}
+\vspace{3pt}
+{\Large Resolving Maxwell's Demon for Continuous Biological Substrates\par}
+\vspace{10pt}
+{\large Ian Todd\par}
+\vspace{3pt}
+Sydney Medical School, University of Sydney, Sydney, NSW, Australia\\
+\href{mailto:itod2305@uni.sydney.edu.au}{itod2305@uni.sydney.edu.au}
+\vspace{6pt}
+
+{\small Author's 2026 edition}
+\end{center}
+\begin{abstract}
+A continuous biological substrate coordinates through distributed physical relations without registering every event history, avoiding the demon's burden of maintaining and resetting those records. Timing inaccessibility and the Projection Bound make this distinction precise. Molecular encounters guide a protein towards a functional conformation; distributed timing relationships shape a neural population's response. The substrate carries these relations through its dynamics while many microscopic histories converge on the same output. Temporal registration separates the capacity needed to distinguish event orders from their statistical entropy and the heat required to reset a record. The Projection Bound connects physical entropy reduction to exported heat, accounting for non-uniform occupancy and entropy within coarse cells. High-dimensional geometry supports exponentially many alternatives whose logarithmic entropy scale grows linearly with dimension. Together, these results explain the economy of deferred projection: use the physical relations to compute, retain the distinctions required by the task, and pay the reset cost for the records actually made. The camera--engine account places this economy within biology's continuous coupling of sensing and action.
+\end{abstract}
+\par\vspace{4pt}
+{\small\noindent\textbf{Keywords:} Maxwell's demon; timing inaccessibility; path degeneracy; continuous substrates; Landauer principle; dimensional projection.\par}
+\vspace{5pt}
+{\footnotesize\noindent The published article, \emph{BioSystems} 258, 105632 (2025), \href{https://doi.org/10.1016/j.biosystems.2025.105632}{doi:10.1016/j.biosystems.2025.105632}, remains the version of record and the article to cite.\par}
+\vspace{12pt}
+}]
+
+\section{Biological computation before the record}
+
+Continuous biological substrates coordinate through distributed physical relations without registering every event history. They thereby avoid the demon's burden of maintaining and resetting a detailed account of the computation. A folding protein carries the effects of molecular encounters forward through its changing conformation. A neural population uses distributed activity to guide an action. In each case, the physical organisation does the work that an explicit history would describe.
+
+This is the biological Maxwell's demon: living systems use correlations with their surroundings to maintain organisation and guide action. They consume free energy and export entropy, but their coordination does not require a separately addressable record of every contributing event. Their internal organisation can remain richer than their output.
+
+Timing inaccessibility and the Projection Bound make this architecture precise. Fine temporal relations influence collective dynamics even when a recorder cannot recover them. Path degeneracy captures the many histories compatible with one functional outcome. The Projection Bound locates the thermodynamic payment when a physical process removes entropy from the ensemble. Together, they explain how biology computes through continuous coupling and defers the commitment to a restricted output.
+
+Landauer's principle and Bennett's account of reversible computation supply the thermodynamic foundation \cite{landauer1961,bennett1982}. A persistent copy can be made reversibly when the source remains available; resetting a reusable memory removes uncertainty. Following the substrate, its correlations and its energy sources through the cycle \cite{parrondo2015} reveals the advantage of avoiding unnecessary intermediate records.
+
+\subsection{The high-dimensional substrate}
+
+At finite spatial resolution and bandwidth, a continuous substrate has a finite set of resolved modes. Molecular cutoffs, noise and experimental access set that scale. High dimensionality describes the independent variations relevant to the computation.
+
+The geometry matters because distinctions multiply across dimensions. If each of $d$ independent coordinates has $b$ resolvable values, there are $b^d$ joint configurations. Here $d$ is the number of coordinates and $b$ is the number of values per coordinate. A physical system can evolve among these configurations through local interactions; it has no need to list them. An explicit enumeration would be a different process.
+
+Relative phases, spatial patterns and molecular constraints determine how a perturbation propagates. A low-dimensional readout preserves a useful feature of that structure while leaving most microscopic distinctions unresolved. The structural correspondence between organism and environment is physical: internal changes covary with environmental changes and alter the organism's response.
+
+Three quantities will recur. A state count describes the size of a chosen set. Shannon entropy describes a probability distribution on that set. Thermodynamic entropy belongs to a physical ensemble and includes the degrees of freedom hidden inside the chosen states. Their relationship supplies the mathematical anchors of the argument.
+
+\section{Timing inaccessibility}
+
+Suppose two molecular events influence a later transition. Their order can affect the transition even if no apparatus records which event came first. For a neural population, changing relative timing can similarly change the collective response while leaving the final action unchanged. Temporal influence and a recoverable temporal record are distinct physical requirements.
+
+Here \emph{timing inaccessibility} means that a specified observation and recording process cannot recover the relevant event order at its chosen temporal resolution and error tolerance, within its resources and allowed disturbance. Those conditions include bandwidth and observation time as well as memory preparation and reuse. They can prevent a detailed history from being available while the substrate continues to respond to the interactions.
+
+A weak signal can control an apparatus powered by an external source. Detectability depends on the signal, noise and coupling; disturbance depends on how the apparatus interacts with the substrate. Memory reuse introduces a distinct entropy balance.
+
+\subsection{Orders, codes and entropy}
+
+Consider $M$ labelled events with distinct occurrence times. Let $\Pi$ denote their realised total order, and let $p_\pi$ be the probability of order $\pi$. All $M!$ permutations are combinatorially possible before dynamical restrictions are imposed.
+
+\begin{proposition}[Temporal registration]
+\label{prop:trb}
+A fixed-length lossless binary code able to distinguish every permutation requires capacity
+\begin{equation}
+B_{\mathrm{cap}}\geq \left\lceil\log_2(M!)\right\rceil .
+\label{eq:capacity}
+\end{equation}
+The Shannon entropy of the order, measured in bits, satisfies
+\begin{equation}
+0\leq H_2(\Pi):=-\sum_\pi p_\pi\log_2 p_\pi
+\leq \log_2(M!).
+\label{eq:orderentropy}
+\end{equation}
+The upper equality holds for uniform orders. For an exact order record reset under the conditions below, its mean reset heat obeys
+\begin{equation}
+\langle Q_{\mathrm{reset}}\rangle
+\geq \kB T\ln 2\,H_2(\Pi).
+\label{eq:reset}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+A code with $B_{\mathrm{cap}}$ bits has at most $2^{B_{\mathrm{cap}}}$ distinct words. An injective encoding of $M!$ orders gives Eq.~\eqref{eq:capacity}. Entropy on a set of $M!$ elements is maximised by the uniform distribution, giving Eq.~\eqref{eq:orderentropy} \cite{coverthomas}. For memory states with equal internal entropy, resetting the order distribution to a specified state reduces memory entropy by $\kB\ln 2\,H_2(\Pi)$. The isothermal entropy balance gives Eq.~\eqref{eq:reset}.
+\end{proof}
+
+Capacity is required to support alternatives, including rarely used ones. Entropy weights them by their actual probabilities. A known deterministic order has zero order entropy even when the apparatus could encode many other orders. The expected length of an optimal binary prefix code lies between $H_2(\Pi)$ and $H_2(\Pi)+1$ bits; block coding can approach the entropy per order. The reset bound charges for the uncertainty removed during reuse.
+
+If only a category of orders matters, define a category variable $C=f(\Pi)$ and use $H_2(C)$. For sequences of $M$ symbols with fixed multiplicities $m_j$, where $m_j$ counts symbols of type $j$ and $\sum_jm_j=M$, the number of distinct sequences is $M!/\prod_jm_j!$. For general precedence constraints, count the allowed total orders or distinguishable classes of the specified constraint set.
+
+\subsection{Memory reuse}
+
+For Eq.~\eqref{eq:reset}, the memory starts in equivalent logical states with equal internal entropy and energy and returns with vanishing error to one standard state. It couples to one thermal bath at temperature $T$, with no exploitable side information; a controller supplies work as needed. Here $\kB$ is Boltzmann's constant. The bound is an ensemble mean, approached with suitable control in the thermodynamically reversible limit. Finite operating time, barriers and noise can increase the required resources \cite{landauer1961,bennett1982}.
+
+A reversible copy can retain the source and correlate an initially prepared blank memory with it. Persistence can be supported by a barrier without continuous dissipation in an ideal passive memory. Preparation, writing, retention and reset therefore need separate accounting. The prepared blank memory itself is a resource.
+
+Let $R$ denote a stored record and $Z$ classical side information available to the reset controller. If $Z$ is retained unchanged and can be exploited reversibly, the corresponding ideal entropy-reduction term is $\kB T\ln 2\,H_2(R\mid Z)$. Here $H_2(R\mid Z)$ is the uncertainty remaining about $R$ given $Z$. Resetting $Z$ later must also be counted. If reset leaves a residual distribution, its final entropy remains in the balance. Non-equivalent logical states require their internal entropy and energy changes as well. Section~\ref{sec:projection} gives that fuller accounting.
+
+Permitting order errors changes the information task before reset is considered. A recorder that guesses the most likely order need not retain the full order entropy. The task must specify the allowed errors or distortion and determine how much information the resulting record preserves \cite{coverthomas}.
+
+For the uniformly distributed orders of ten events,
+\begin{align}
+\log_2(10!)&=21.7911\ \text{bits},\nonumber\\
+B_{\mathrm{cap}}&=22\ \text{bits}.
+\end{align}
+At $300$ K, $\kB T\ln2=2.8710\times10^{-21}$ J, so the ideal mean reset bound is $6.2562\times10^{-20}$ J, or $0.062562$ attojoules. The unused codewords in a 22-bit representation do not make the joint record entropy 22 bits.
+
+\subsection{Weak coupling and sensing}
+
+Continuous dynamics can accumulate a distributed signal before a record is produced. For $n$ equally sensitive channels with independent noise of equal variance, summing a common signal increases the signal-to-noise amplitude ratio by $\sqrt n$. The useful independent channels and the decoder determine the integration gain.
+
+Stochastic resonance can improve information transmission in noisy nonlinear systems, including the recovery of temporal features \cite{stocks2000,mcdonnell2011}. The recording task determines whether the relevant information is a collective statistic, a timing estimate or a complete event order.
+
+The additive white Gaussian noise channel provides a separate, model-specific energy comparison. Its wideband asymptotic reliable-communication limit is $E_b/N_0\geq\ln2$, where $E_b$ is signal energy per information bit and $N_0$ is the noise spectral-density parameter in the standard communication convention \cite{verdu2002}. Here the physical channel model determines the relation between $N_0$ and thermal energy.
+
+Weak extracellular fields influence neuronal dynamics \cite{anastassiou2011}, giving distributed coupling a concrete biological role. Calculating work per neuron requires field amplitude, geometry, impedance and coupling duration.
+
+\section{Physical projection}
+\label{sec:projection}
+
+A cell committing to an action can restrict the physical configurations available to its internal machinery. This is the sense of \emph{projection} used for the thermodynamic result: an actual change of ensemble under a physical protocol. It can be continuous in time and need not coincide with the instant a decision becomes observable.
+
+A physical projection changes the ensemble itself. A mathematical readout selects coordinates for reporting and can leave the substrate's entropy intact. The bound follows the physical degrees of freedom whose entropy changes.
+
+\subsection{The cell model}
+
+Partition a classical state space into disjoint cells at resolution $\varepsilon$, measured in a stated physical metric. At each endpoint of a protocol, let $N$ be the number of occupied cells, $p_i$ the probability of cell $i$, and $s_i$ the physical conditional entropy within that cell, in J/K. Use one consistent microscopic reference measure at both endpoints. With natural logarithms,
+\begin{equation}
+\begin{gathered}
+S=\kB H(p)+\bar s,\\
+H(p)=-\sum_i p_i\ln p_i,\qquad
+\bar s=\sum_i p_i s_i .
+\end{gathered}
+\label{eq:physicalentropy}
+\end{equation}
+Here $S$ is total system entropy and $\bar s$ is the mean within-cell entropy. This decomposition follows by writing the microscopic density in each cell as its cell probability times its conditional density.
+
+Let $U$ denote the uniform distribution on the occupied cells. The Kullback--Leibler divergence, in nats, is $\KL(p\Vert U)=\sum_i p_i\ln(p_i/U_i)$. Then
+\begin{equation}
+H(p)=\ln N-\KL(p\Vert U).
+\label{eq:kl}
+\end{equation}
+This identity connects the occupied-cell count to its probability distribution. A geometric covering number enters the bound through a corresponding physical partition.
+
+\begin{proposition}[Projection Bound]
+\label{prop:projection}
+Consider a composite physical system closed to matter exchange, including any information-bearing controller needed for the protocol, coupled to a single thermal reservoir at temperature $T$. Assume the entropy in Eq.~\eqref{eq:physicalentropy} accounts for its physical entropy, and no uncounted correlated auxiliary system or entropy reservoir supplies a resource. Let ``pre'' and ``post'' label its initial and final ensembles. For mean heat $\langle Q_{\mathrm{bath}}\rangle$ delivered to the bath, positive out of the system,
+\begin{align}
+\langle Q_{\mathrm{bath}}\rangle
+&\geq \kB T\left[
+\ln\frac{N_{\mathrm{pre}}}{N_{\mathrm{post}}}
+-\KL(p_{\mathrm{pre}}\Vert U_{\mathrm{pre}})
+\right.\nonumber\\[-2pt]
+&\hspace{16mm}\left.
++\KL(p_{\mathrm{post}}\Vert U_{\mathrm{post}})
+\right]\nonumber\\
+&\quad+T(\bar s_{\mathrm{pre}}-\bar s_{\mathrm{post}}).
+\label{eq:projection}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+The mean total entropy production is
+\begin{equation}
+\Sigma=S_{\mathrm{post}}-S_{\mathrm{pre}}
++\frac{\langle Q_{\mathrm{bath}}\rangle}{T}\geq0 .
+\label{eq:secondlaw}
+\end{equation}
+Substituting Eqs.~\eqref{eq:physicalentropy} and \eqref{eq:kl} gives Eq.~\eqref{eq:projection}. This is the isothermal entropy balance applied to the stated cell model \cite{seifert2012}.
+\end{proof}
+
+The bound holds at any driving rate; saturation requires controls that achieve vanishing total entropy production. A negative right-hand side permits heat absorption. Changing the partition redistributes entropy between cells and their interiors while preserving the total and its physical heat requirement.
+
+If mean within-cell entropy is unchanged and both cell distributions are uniform, Eq.~\eqref{eq:projection} becomes
+\begin{equation}
+\langle Q_{\mathrm{bath}}\rangle
+\geq \kB T\ln\frac{N_{\mathrm{pre}}}{N_{\mathrm{post}}}.
+\label{eq:geometric}
+\end{equation}
+For an unbiased two-state memory reset to one state, this gives $\kB T\ln2$. For non-uniform occupancy, the two divergence terms raise or lower the geometric expression according to the actual distributions.
+
+\subsection{Geometry, work and temperature}
+
+Let $N_\varepsilon(\mathcal M)$ be the minimum number of balls of radius $\varepsilon$ needed to cover a compact set of configurations $\mathcal M$. The logarithm of this count is a metric $\varepsilon$-entropy \cite{kolmogorov1959}. For a regular $d$-dimensional region of scale $L$, a common small-scale form is $N_\varepsilon(\mathcal M)\simeq a(L/\varepsilon)^d$, where $a$ is a geometric factor and $L/\varepsilon$ is dimensionless.
+
+For covering cells that represent the occupied physical partition in Eq.~\eqref{eq:geometric}, the corresponding heat scale is
+\begin{equation}
+\kB T\left[(d_{\mathrm{pre}}-d_{\mathrm{post}})
+\ln(L/\varepsilon)+\ln(a_{\mathrm{pre}}/a_{\mathrm{post}})\right].
+\label{eq:dimension}
+\end{equation}
+Comparable prefactors give the leading linear dependence on the lost dimension. Here $d$ is a covering dimension; covariance participation ratios describe variance across measured modes, and discrete output alphabets supply state counts.
+
+Heat and work remain separate. Let $E$ be mean internal energy, $W_{\mathrm{on}}$ work done on the system, and $F=E-TS$ its non-equilibrium free energy at the fixed bath temperature. For the closed isothermal setting, with $\Delta$ denoting final minus initial,
+\begin{equation}
+\langle W_{\mathrm{on}}\rangle-\Delta F=T\Sigma .
+\label{eq:work}
+\end{equation}
+A reversible compression exports heat while its excess work vanishes: the heat tracks entropy reduction, and the work also includes the internal-energy change.
+
+Cells and neurons are active, open systems. Their complete balances include chemical free energy and entropy carried by material exchange. Equation~\eqref{eq:secondlaw} uses the actual reservoir temperature; an effective temperature inferred from noise and response enters such a balance only through a thermodynamic model of those fluctuations.
+
+In slow-driving regimes, thermodynamic geometry relates finite-time excess work to friction and relaxation along the protocol \cite{sivak2012}. These dynamical quantities connect the duration of a decision to its excess work in joules.
+
+\section{Path degeneracy}
+
+Many microscopic histories can lead to the same fold or action. This multiplicity is related to biological degeneracy, in which different structures or processes support the same function \cite{edelman2001}. It allows a functional output to tolerate details that vary from one realisation to another.
+
+Fix a time horizon $\tau$, a spatial resolution $\varepsilon$ and temporal bins of width $\Delta t$. Let $\Gamma$ be the resulting discrete trajectory variable and $Y$ an output determined by that trajectory. Define
+\begin{equation}
+\Omega_y=\bigl|\{\gamma:Y(\gamma)=y\}\bigr|
+\end{equation}
+as the number of allowed resolved trajectories giving output $y$. For a bounded finite discretisation, their remaining uncertainty satisfies
+\begin{equation}
+H_2(\Gamma\mid Y=y)\leq\log_2\Omega_y .
+\label{eq:paths}
+\end{equation}
+Equality holds for uniform conditional probabilities. The dynamics, time horizon and output map determine $\Omega_y$. Timing inaccessibility leaves this multiplicity unresolved by a recorder while the substrate continues to respond to the interactions. Perturbing the distributed structure tests how those relations contribute to function.
+
+\subsection{A transparent timing model}
+
+A simple model makes the exponential scaling explicit. Suppose $n$ independent timing coordinates each locate one event within an interval of duration $\tau_c$. Each coordinate has $q=\tau_c/\Delta t$ bins, taken as an integer for this illustration. There are $q^n$ assignments. For nested fine and coarse bins, let $r=\Delta t_{\mathrm{coarse}}/\Delta t_{\mathrm{fine}}$ be the number of fine bins per coarse bin. Each coarse assignment then admits $r^n$ fine assignments, provided all are dynamically allowed.
+
+If a constraint model retains an effective exponent $n=d/\kappa$, with $d$ nominal coordinates and $\kappa\geq1$ a specified reduction factor, its scaling estimate is
+\begin{equation}
+\log_{10}\Omega=\frac{d}{\kappa}\log_{10}r.
+\label{eq:timingmodel}
+\end{equation}
+Non-integer $d/\kappa$ is a fitted scaling exponent, not an exact number of independent coordinates. Correlations can alter probabilities without removing any allowed assignments; in that case they reduce entropy rather than the support count. Equation~\eqref{eq:timingmodel} counts the constrained timing assignments of this model.
+
+For $\tau_c=100$ ms, coarse bins of $20$ ms and fine bins of $0.1$ ms, $r=200$. With $d=50$ and $\kappa=2$, the model gives
+\begin{equation}
+\log_{10}\Omega=57.5257,\qquad
+\Omega=3.3554\times10^{57}.
+\end{equation}
+Multidimensional neural population activity motivates this timing model \cite{stringer2019}; the chosen parameters illustrate its scaling.
+
+\begin{table}[t]
+\centering
+\caption{Illustrative $\log_{10}\Omega=(d/\kappa)\log_{10}r$. Each column changes the fine-to-coarse bin ratio while holding the listed exponent fixed. Values are rounded to one decimal place.}
+\label{tab:sensitivity}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+$(d,\kappa)$ & $r=50$ & $r=200$ & $r=500$\\
+\midrule
+$(30,2)$ & 25.5 & 34.5 & 40.5\\
+$(50,2)$ & 42.5 & 57.5 & 67.5\\
+$(80,2)$ & 68.0 & 92.0 & 108.0\\
+$(50,3)$ & 28.3 & 38.4 & 45.0\\
+$(50,5)$ & 17.0 & 23.0 & 27.0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:sensitivity} shows how strongly the exponent matters. Allowing $d$ to range independently from 50 to 200 and $\kappa$ from 2 to 5 gives $23.0103$ to $230.1030$ decades at $r=200$. This parameter-sensitivity range shows the leverage of the effective exponent.
+
+\subsection{Protein configurations and folding paths}
+
+For a 100-residue chain with three independent conformational choices per residue, the combinatorial configuration count is
+\begin{equation}
+3^{100}=5.1538\times10^{47}.
+\end{equation}
+If a hypothetical coarse description divides this set into $10^6$ classes, its mean class size is $5.1538\times10^{41}$. This average does not require equal class sizes, but assigning it to a particular fold does. Steric restrictions and energetic preferences restrict the allowed configurations and their occupation probabilities.
+
+These counts describe configurations; a transition model determines the folding paths, and occupation probabilities determine the ensemble entropy. Combining configuration and timing counts requires independent choices counted once.
+
+Molecular interactions enforce constraints as folding proceeds. Different histories reach a native structure without leaving a record of every encounter. The protein's changing physical organisation carries the computation. Its folding free energy includes solvent and internal-energy changes alongside conformational entropy.
+
+\section{Collective dynamics without microscopic reconstruction}
+
+A population of coupled oscillators gives a concrete example. Let $\theta_i$ be the phase of oscillator $i$, $\omega_i$ its intrinsic angular frequency, $K$ a coupling rate, and $N$ the number of oscillators. With $t$ denoting time, a noisy Kuramoto model is
+\begin{equation}
+\frac{d\theta_i}{dt}=\omega_i+
+\frac{K}{N}\sum_{j=1}^{N}\sin(\theta_j-\theta_i)+\eta_i(t),
+\label{eq:kuramoto}
+\end{equation}
+where $\eta_i$ has zero mean and covariance
+$\langle\eta_i(t)\eta_j(t')\rangle=2D_\theta\delta_{ij}\delta(t-t')$.
+Here $D_\theta$ is phase diffusivity; the two delta symbols impose independence between oscillators and white noise in time.
+
+With $\mathrm{i}$ denoting the imaginary unit, the complex order parameter
+\begin{equation}
+z=\frac{1}{N}\sum_j e^{\mathrm{i}\theta_j}
+=r_\theta e^{\mathrm{i}\psi}
+\end{equation}
+has magnitude $r_\theta$ measuring phase alignment and angle $\psi$ giving the mean phase. Many microscopic phase configurations share the same $z$. The collective response can therefore be described without reconstructing every phase history.
+
+At angular resolution $\Delta\theta$, a uniform grid on the full phase space has approximately $(2\pi/\Delta\theta)^N$ cells. Counting the subset compatible with a specified order parameter requires its constraint and tolerance. Synchronisation narrows relative-phase distributions; observing $z$ reads out a collective observable.
+
+For noiseless populations in the infinite-size limit satisfying its frequency and regularity assumptions, the Ott--Antonsen reduction gives closed low-dimensional macroscopic dynamics. A Lorentzian frequency distribution admits a complex order-parameter description \cite{ott2008,ott2009}. This reduced macroscopic description coexists with the population's microscopic thermodynamic degrees of freedom.
+
+The example shows how collective dynamics preserve a useful response while leaving microscopic histories unresolved. A compact predictor can capture that response too. The economy lies in carrying the relations needed for the output without reconstructing the entire history.
+
+\section{The camera and the engine}
+
+A biological substrate senses and acts through the same evolving physical organisation. Its ``camera'' role is to develop correlations with environmental structure. Its ``engine'' role is to use its state to alter subsequent interactions. These roles can occur together: motion changes the next sensory input, and changing internal constraints changes which perturbations affect the system.
+
+This coupling carries task-relevant relations across many modes before commitment to a small output. In a protein, those relations include conformational constraints and interactions with its surroundings. In a neural population, they can include population activity and changing temporal coordination. The machinery that carries these relations is part of the computation.
+
+Information thermodynamics accounts for the role of correlations in feedback \cite{sagawa2010,parrondo2015}. The camera--engine picture applies that accounting to a continuously coupled biological organisation. Correlation is a physical resource whose creation, use and loss depend on the cycle. Reversible correlation formation can have vanishing entropy production while still requiring work or prepared states. Active biological operation also dissipates energy during sensing and maintenance. Deferred projection concerns avoidable information loss within that operation.
+
+\subsection{Records required by the task}
+
+Let $R$ be a detailed history record and let $Y=f(R)$ be the output required by a task. The entropy chain rule gives
+\begin{equation}
+H_2(R)=H_2(Y)+H_2(R\mid Y).
+\label{eq:recordchain}
+\end{equation}
+If both are stored in equivalent ideal memories and independently reset without side information, the difference between their minimum reset heats is $\kB T\ln2\,H_2(R\mid Y)$. This is the extra minimum reset burden of retaining details beyond the output.
+
+As a bookkeeping illustration, 100 independent unbiased binary variables have $2^{100}$ joint states. Resetting all but one, while retaining one uniformly distributed variable and leaving within-state entropy unchanged, exports at least $99\kB T\ln2=2.8423\times10^{-19}$ J at $300$ K. Resetting the retained variable later adds $\kB T\ln2$. Reading the retained variable with the other 99 intact preserves their entropy.
+
+Deferred projection avoids the detailed history record by letting the substrate's interactions determine the required output. Digital algorithms that maintain sufficient statistics or use reversible computation share this opportunity. Analog front ends and hybrid systems exploit it by integrating signals before digitisation. The architectural principle is to preserve useful relations and avoid unnecessary records.
+
+An explicit enumeration of $b^d$ states takes exponentially many entries, whereas indexing one such state takes $d\log_2b$ bits. Both the ideal reset of a uniform index and the geometric projection scale can be linear in $d$. These are state-count and entropy scalings. Simulation time and total energy depend on the algorithm and physical implementation.
+
+Biology embodies constraints in its dynamics and uses them continuously. This is the source of the proposed efficiency advantage: physical coordination replaces repeated reconstruction of a description. The bounds locate the entropy exported when that computation removes physical distinctions.
+
+\section{Biological tests}
+
+The decisive experiments must connect distributed dynamics to function and then to energy. Recording more variables is useful only if it identifies distinctions the system itself uses. Perturbations of relative timing, with signal magnitude and other relevant statistics controlled, can test whether unresolved coordination contributes to the output. The observation bandwidth and induced disturbance must be reported.
+
+A dimensionality estimate helps describe this structure. For a positive semidefinite covariance matrix with eigenvalues $\lambda_i$, the participation ratio is
+\begin{equation}
+D_{\mathrm{PR}}=
+\frac{(\sum_i\lambda_i)^2}{\sum_i\lambda_i^2}.
+\label{eq:pr}
+\end{equation}
+It measures how broadly variance is distributed across modes. Report the measured variables, scaling, frequency band and sampling window. Normalising channels changes the question from covariance to correlation structure. Finite sample size and measurement noise can change the spectrum substantially.
+
+For phase data, let $\phi_i(t)$ be the phase on channel $i$ at sample $t$, and let $n_s$ be the number of samples. The complex matrix
+\begin{equation}
+C_{ij}=\frac{1}{n_s}\sum_t
+e^{\mathrm{i}[\phi_i(t)-\phi_j(t)]}
+\end{equation}
+is positive semidefinite and can be used for a spectral participation ratio. Taking entrywise magnitudes need not preserve that property. Constant phase offsets on individual channels leave the magnitudes unchanged and transform the complex matrix by a unitary diagonal conjugation, preserving its eigenvalues. They therefore do not remove the structure tested by either of those measures.
+
+Independent Fourier phase randomisation, with conjugate symmetry retained for real signals, supplies a surrogate preserving individual power spectra while changing cross-channel timing. Its effect on the target dependence must be checked; surrogate choice depends on the hypothesis. The ratio of median surrogate participation ratio to the data participation ratio is a descriptive comparison. It need not exceed one and does not automatically estimate the $\kappa$ in Eq.~\eqref{eq:timingmodel}. Using an already reduced dimension and then dividing by a second redundancy factor risks counting the same constraint twice.
+
+To test the Projection Bound, identify the substrate's initial and final ensembles and measure the terms in Eq.~\eqref{eq:projection}. Compare implementations at matched outputs, error tolerance, time horizon and throughput while varying how much intermediate detail they record and reset. Account for memory reuse, control and maintenance over the complete cycle. This tests the prediction that distributed coordination reduces the bookkeeping burden of producing the same functional result.
+
+\paragraph{Scope and open questions.}
+The central empirical question is how much of biology's energy economy comes from avoiding intermediate records. Joint measurements of function, physical entropy change and cycle energy can resolve that contribution. Timing-critical tasks and changing signals provide demanding tests of when deferred recording pays.
+
+\section{Conclusion}
+
+A continuous biological substrate computes through the physical relations it embodies. It coordinates molecular encounters, collective timing and action without maintaining an event-by-event account. Timing inaccessibility describes the histories unavailable to a recorder; path degeneracy describes their convergence on a functional output; the Projection Bound accounts for entropy exported when the physical ensemble contracts. The biological demon's economy is architectural: use distributed relations to compute, and retain the records the task requires.
+
+\section*{Declarations}
+
+No new experimental data are reported. Funding: none. Competing interests: none.
+
+This edition was rewritten with AI assistance (Claude, Codex) for drafting, mathematical checking and critical review; the author takes responsibility for the content.
+
+\newpage
+\begingroup
+\small
+\bibliographystyle{abbrv}
+\bibliography{references}
+\endgroup
+\end{document}
